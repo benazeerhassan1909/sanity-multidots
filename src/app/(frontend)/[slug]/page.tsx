@@ -24,7 +24,7 @@ export async function generateMetadata({
     }
 
     const metadata: Metadata = {
-        title: page.seo.title,
+        title: page.seo.title || page.title,
         description: page.seo.description,
     };
 

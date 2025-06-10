@@ -4,6 +4,7 @@ import siteSettings from './siteSettings'
 import { pageType } from "./pageType";
 import { pageBuilderType } from "./pageBuilderType";
 import { heroType } from "./blocks/heroType";
+import { seoType } from './seoType';
 
 
 
@@ -13,6 +14,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     siteSettings,
     pageType,
     pageBuilderType,
-    heroType
+    heroType,
+    seoType,
   ],
 }
