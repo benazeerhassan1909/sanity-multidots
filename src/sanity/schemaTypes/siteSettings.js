@@ -201,6 +201,12 @@ const siteSettings = {
                 },
             ],
         },
+        {
+            name: "homePage",
+            type: "reference",
+            to: [{ type: "page" }],
+            group: 'pageSettings',
+        },
     ],
 
 }

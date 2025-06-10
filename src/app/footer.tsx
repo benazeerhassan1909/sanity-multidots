@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 
 // import { sanityFetch } from "@/sanity/lib/live";
 // import Link from "next/link";
