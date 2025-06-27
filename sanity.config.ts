@@ -17,6 +17,7 @@ import { apiVersion, dataset, projectId } from './src/sanity/env'
 import { schema } from './src/sanity/schemaTypes'
 import { structure } from './src/sanity/structure'
 import { colorInput } from '@sanity/color-input';
+
 import {
   dashboardTool,
   sanityTutorialsWidget,

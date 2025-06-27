@@ -6,7 +6,7 @@ import Header from "../header";
 import Footer from "../footer";
 import Head from 'next/head';
 import ScrollHandler from "@/components/ScrollHandler";
-
+import "@/app/globals.css";
 
 
 export default async function FrontendLayout({
@@ -20,10 +20,9 @@ export default async function FrontendLayout({
         <meta name="robots" content="noindex, nofollow" />
       </Head>
       <ScrollHandler />
-      <body className="">
-        <div className="">
+      <body className="container">
           <Header />
-          <main className="">
+          <main className="main-content">
             {children}
             <SanityLive />
             {(await draftMode()).isEnabled && (
@@ -32,9 +31,7 @@ export default async function FrontendLayout({
                 <VisualEditing />
               </>
             )}
-
           </main>
-        </div>
         <Footer />
       </body>
     </>

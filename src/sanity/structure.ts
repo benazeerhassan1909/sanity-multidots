@@ -18,5 +18,6 @@ export const structure: StructureResolver = (S) =>
         (item) =>
           item.getId() &&
           !["siteSettings"].includes(item.getId()!)
-      ),    ]
+      ),
+    ]
     )

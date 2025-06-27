@@ -50,10 +50,12 @@ export default async function Page({ params }: RouteProps) {
     const { data: page } = await getPage(params);
 
     return page?.content ? (
+        <>
         <PageBuilder
             documentId={page._id}
             documentType={page._type}
             content={page.content}
-        />
+            />
+        </>
     ) : null;
 }

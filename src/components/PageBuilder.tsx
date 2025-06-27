@@ -1,11 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { Hero } from "@/components/blocks/Hero";
+import  HeroBlock  from "@/components/blocks/Hero";
+import  ListBlock from "@/components/blocks/List";
 import { client } from "@/sanity/lib/client";
 import { createDataAttribute } from "next-sanity";
 import { useOptimistic } from "next-sanity/hooks";
-import { PAGE_QUERYResult } from "@/sanity/types";
+// import { PAGE_QUERYResult } from "@/sanity/types";
+import CTABlock from "@/components/blocks/CTA";
+import ClientList from "@/components/blocks/ClientList";
+import ImageTextSection from "./blocks/ImageText";
+import FeaturesBlock from "./blocks/Feature";
 
 
 
@@ -14,6 +19,7 @@ type PageBuilderProps = {
     documentId: string;
     documentType: string;
 };
+type BlockType = "hero" | "List" | "ctaBlock" | "clientList" | "imageTextSection" | "features" |string; // Extend with other block types as needed
 
 const { projectId, dataset, stega } = client.config();
 export const createDataAttributeConfig = {
@@ -28,11 +34,11 @@ export function PageBuilder({
     documentType,
 }: PageBuilderProps) {
     const blocks = useOptimistic<
-        NonNullable<PAGE_QUERYResult>["content"] | undefined,
-        NonNullable<PAGE_QUERYResult>
+        any[] | undefined,
+        { id: string; document?: { content?: any[]; [key: string]: any } }
     >(content, (state, action) => {
         if (action.id === documentId) {
-            return action?.document?.content?.map(
+            return (action?.document as { content?: any[] })?.content?.map(
                 (block) => state?.find((s) => s._key === block?._key) || block
             );
         }
@@ -66,11 +72,41 @@ export function PageBuilder({
                     </div>
                 );
 
-                switch (block._type) {
+                switch (block._type as BlockType) {
                     case "hero":
                         return (
                             <DragHandle key={block._key}>
-                                <Hero {...block} />
+                                <HeroBlock {...(block as React.ComponentProps<typeof HeroBlock>)} />
+                            </DragHandle>
+                        );
+                    case "List":
+                        return (
+                            <DragHandle key={block._key}>
+                                <ListBlock {...(block as React.ComponentProps<typeof ListBlock>)} />
+                            </DragHandle>
+                        );
+                    case "ctaBlock":
+                        return (
+                            <DragHandle key={block._key}>
+                                <CTABlock {...(block as React.ComponentProps<typeof CTABlock>)} />
+                            </DragHandle>
+                        );
+                    case "clientList":
+                        return (
+                            <DragHandle key={block._key}>
+                                <ClientList {...(block as React.ComponentProps<typeof ClientList>)} />
+                            </DragHandle>
+                        );
+                    case "imageTextSection":
+                        return (
+                            <DragHandle key={block._key}>
+                                <ImageTextSection {...(block as React.ComponentProps<typeof ImageTextSection>)} />
+                            </DragHandle>
+                        );
+                    case "features":
+                        return (
+                            <DragHandle key={block._key}>
+                                <FeaturesBlock {...(block as React.ComponentProps<typeof FeaturesBlock>)} />    
                             </DragHandle>
                         );
                     default:
