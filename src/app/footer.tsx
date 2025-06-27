@@ -13,7 +13,14 @@ type AddressSection = {
     address?: string;
     phone?: string;
 };
+import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
+type SocialLink = {
+    _key: string;
+    url?: string;
+    icon?: SanityImageSource; // Use Sanity's image type
+};
+  
 export default async function Footer() {
     const { data: siteSettings } = await sanityFetch({ query: FOOTER_QUERY });
 
@@ -26,144 +33,157 @@ export default async function Footer() {
             ? siteSettings.footer.addressSection.locations
             : [];
     const menuItems = siteSettings?.footer?.footermenuItems ?? [];
-    // const socialLinks = siteSettings?.footer?.socialLinks ?? [];
-
-
-
+    const socialLinks = siteSettings?.footer?.socialLinks ?? [];
 
     return (
-
-
         <div className="footer__container">
-            {/* Footer Logo */}
-            {footerLogo && (
-                <div className="footer__logo">
-                    <Image
-                        src={footerLogo ? urlFor(footerLogo)?.url() ?? '' : ''}
-                        alt={footerLogo?.alt || 'Footer Logo'}
-                        width={footerLogo?.width || 150}
-                        height={footerLogo?.height || 40}
-                    />
-                </div>
-            )}
+            <div className='footer-top'>
+                <div className='footer-top-left'>
+                    {footerLogo && (
+                        <div className="footer__logo">
+                            <Image
+                                src={footerLogo ? urlFor(footerLogo)?.url() ?? '' : ''}
+                                alt={footerLogo?.alt || 'Footer Logo'}
+                                width={footerLogo?.width || 150}
+                                height={footerLogo?.height || 40}
+                            />
+                        </div>
+                    )}
 
-            <div className="footer__contact">
-                {email && <p className="footer__email">{email}</p>}
+                    <div className="footer__contact">
+                        {email && <p className="footer__email">{email}</p>}
 
-                {scheduleMeetingUrl && (
-                    <a href={scheduleMeetingUrl} className="footer__schedule-link">
-                        {scheduleMeetingTitle || 'Schedule a Meeting'}
-                    </a>
-                )}
+                        {scheduleMeetingUrl && (
+                            <a href={scheduleMeetingUrl} className="footer__schedule-link">
+                                {scheduleMeetingTitle || 'Schedule a Meeting'}
+                            </a>
+                        )}
 
-                {/* {buttons.map((button) => (
+                        {/* {buttons.map((button) => (
                     <Link key={button._key} href={button.url} className={`footer__button`}>
                         {button.label}
                     </Link>
                 ))} */}
+                    </div>
+
+                    {/* Partner Logos */}
+                    {(footerLogos.footerLogo1 || footerLogos.footerLogo2 || footerLogos.footerLogo3) && (
+                        <div className="footer__partner-logos">
+                            {footerLogos.footerLogo1 && (
+                                <Image
+                                    src={footerLogos.footerLogo1 ? urlFor(footerLogos.footerLogo1)?.url() ?? '' : ''}
+                                    alt="Partner Logo 1"
+                                    width={100}
+                                    height={40}
+                                />
+                            )}
+                            {footerLogos.footerLogo2 && (
+                                <Image
+                                    src={footerLogos.footerLogo2 ? urlFor(footerLogos.footerLogo2)?.url() ?? '' : ''}
+                                    alt="Partner Logo 2"
+                                    width={100}
+                                    height={40}
+                                />
+                            )}
+                            {footerLogos.footerLogo3 && (
+                                <Image
+                                    src={footerLogos.footerLogo3 ? urlFor(footerLogos.footerLogo3)?.url() ?? '' : ''}
+                                    alt="Partner Logo 3"
+                                    width={100}
+                                    height={40}
+                                />
+                            )}
+                        </div>
+                    )}
+                </div>
+                <div className='footer-top-right'>
+                    {Array.isArray(addressSections)
+                        ? addressSections.length > 0 && (
+                            <div className="footer__addressSections">
+                                <div className="footer__addressSections-grid">
+                                    {addressSections.map((locations) => (
+                                        <div key={locations._key} className="footer__location">
+                                            <h4 className="footer__location-title">{locations.title}</h4>
+                                            <p className="footer__location-address">{locations.address}</p>
+                                            <p className="footer__location-phone">{locations.phone}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )
+                        : typeof addressSections === 'object' &&
+                        addressSections !== null &&
+                        'locations' in addressSections &&
+                        Array.isArray((addressSections as { locations: AddressSection[] }).locations) && (
+                            <div className="footer__addressSections">
+                                <h3 className="footer__addressSections-title">Our Offices</h3>
+                                <div className="footer__addressSections-grid">
+                                    {(addressSections as { locations: AddressSection[] }).locations.map((location: AddressSection) => (
+                                        <div key={location._key} className="footer__location">
+                                            <h4 className="footer__location-title">{location.title}</h4>
+                                            <p className="footer__location-address">{location.address}</p>
+                                            <p className="footer__location-phone">{location.phone}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )
+                    }
+
+                    {/* Footer Menu */}
+                    {menuItems.length > 0 && (
+                        <nav className="footer__menu">
+                            <ul className="footer__menu-list">
+                                {menuItems.map((item: { _key: string; url?: string; title?: string }) => (
+                                    <li key={item._key} className="footer__menu-item">
+                                        <Link href={item.url ?? '#'} className="footer__menu-link">
+                                            {item.title}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </nav>
+                    )}
+                </div>
             </div>
+            <div className='footer-bottom'>
 
-            {/* Partner Logos */}
-            {(footerLogos.footerLogo1 || footerLogos.footerLogo2 || footerLogos.footerLogo3) && (
-                <div className="footer__partner-logos">
-                    {footerLogos.footerLogo1 && (
-                        <Image
-                            src={footerLogos.footerLogo1 ? urlFor(footerLogos.footerLogo1)?.url() ?? '' : ''}
-                            alt="Partner Logo 1"
-                            width={100}
-                            height={40}
-                        />
-                    )}
-                    {footerLogos.footerLogo2 && (
-                        <Image
-                            src={footerLogos.footerLogo2 ? urlFor(footerLogos.footerLogo2)?.url() ?? '' : ''}
-                            alt="Partner Logo 2"
-                            width={100}
-                            height={40}
-                        />
-                    )}
-                    {footerLogos.footerLogo3 && (
-                        <Image
-                            src={footerLogos.footerLogo3 ? urlFor(footerLogos.footerLogo3)?.url() ?? '' : ''}
-                            alt="Partner Logo 3"
-                            width={100}
-                            height={40}
-                        />
+                <div className='footer-bottom-left'>
+                    {copyrrightText && (
+                        <div className="footer__copyright">
+                            <p>{copyrrightText}</p>
+                        </div>
                     )}
                 </div>
-            )}
-            {Array.isArray(addressSections)
-                ? addressSections.length > 0 && (
-                    <div className="footer__addressSections">
-                        <h3 className="footer__addressSections-title">Our Offices</h3>
-                        <div className="footer__addressSections-grid">
-                            {addressSections.map((locations) => (
-                                <div key={locations._key} className="footer__location">
-                                    <h4 className="footer__location-title">{locations.title}</h4>
-                                    <p className="footer__location-address">{locations.address}</p>
-                                    <p className="footer__location-phone">{locations.phone}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )
-                : typeof addressSections === 'object' &&
-                  addressSections !== null &&
-                  'locations' in addressSections &&
-                  Array.isArray((addressSections as { locations: AddressSection[] }).locations) && (
-                    <div className="footer__addressSections">
-                        <h3 className="footer__addressSections-title">Our Offices</h3>
-                        <div className="footer__addressSections-grid">
-                            {(addressSections as { locations: AddressSection[] }).locations.map((location: AddressSection) => (
-                                <div key={location._key} className="footer__location">
-                                    <h4 className="footer__location-title">{location.title}</h4>
-                                    <p className="footer__location-address">{location.address}</p>
-                                    <p className="footer__location-phone">{location.phone}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                )
-            }
-
-            {/* Footer Menu */}
-            {menuItems.length > 0 && (
-                <nav className="footer__menu">
-                    <ul className="footer__menu-list">
-                        {menuItems.map((item) => (
-                            <li key={item._key} className="footer__menu-item">
-                                <Link href={item.url ?? '#'} className="footer__menu-link">
-                                    {item.title}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
-                </nav>
-            )}
-
-            {/* Social Links */}
-            {/* {socialLinks.length > 0 && (
+                <div className='footer-bottom-right'>
+                    {socialLinks.length > 0 && (
                 <div className="footer__social">
-                    {socialLinks.map((link) => (
-                        <a
-                            key={link._key}
-                            href={link.url}
-                            className="footer__social-link"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <i className={link.icon} />
-                        </a>
-                    ))}
-                </div>
-            )} */}
-
-            {/* Copyright */}
-            {copyrrightText && (
-                <div className="footer__copyright">
-                    <p>{copyrrightText}</p>
+                            {socialLinks.length > 0 && (
+                                <div className="footer__social">
+                                    {socialLinks.map((link: SocialLink) => (
+                                        <a
+                                            key={link._key}
+                                            href={link.url}
+                                            className="footer__social-link"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            {link.icon && (
+                                                <Image
+                                                    src={urlFor(link.icon).url()}
+                                                    alt="Social Icon"
+                                                    width={24}  // Fixed: Use number instead of string
+                                                    height={24} // Fixed: Use number instead of string
+                                                />
+                                            )}
+                                        </a>
+                                    ))}
+                                </div>
+                            )}
                 </div>
             )}
+                </div>
+            </div>
         </div>
     );
 }

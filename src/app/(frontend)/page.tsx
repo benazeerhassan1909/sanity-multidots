@@ -22,22 +22,23 @@ export async function generateMetadata({
   }
 
   const metadata: Metadata = {
-    title: page.seo?.title || page.title || "Home",
-    description: page.seo?.description,
+    title: page.homePage?.seo?.title || page.homePage?.title || "Home",
+    description: page.homePage?.seo?.description,
   };
 
   metadata.openGraph = {
-    images: {
-      url: page.seo?.image
-        ? urlFor(page.seo?.image).width(1200).height(630).url()
-        : `/api/og?id=${page._id}`,
-      width: 1200,
-      height: 630,
-    },
+    images: [
+      {
+        url: page.homePage?.seo?.image
+          ? urlFor(page.homePage.seo.image).width(1200).height(630).url()
+          : (page.homePage?._id ? `/api/og?id=${page.homePage._id}` : ""),
+        width: 1200,
+        height: 630,
+      },
+    ],
   };
 
-
-  if (page.seo?.noIndex) {
+  if (page.homePage?.seo?.noIndex) {
     metadata.robots = "noindex";
   }
 

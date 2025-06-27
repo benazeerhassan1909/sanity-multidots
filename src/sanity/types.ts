@@ -322,6 +322,22 @@ export type SiteSettings = {
       _key: string;
     }>;
     copyrrightText?: string;
+    socialLinks?: Array<{
+      icon?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        _type: "image";
+      };
+      url?: string;
+      _key: string;
+    }>;
   };
   homePage?: {
     _ref: string;
@@ -682,6 +698,22 @@ export type FOOTER_QUERYResult = {
       _key: string;
     }>;
     copyrrightText?: string;
+    socialLinks?: Array<{
+      icon?: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        media?: unknown;
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        _type: "image";
+      };
+      url?: string;
+      _key: string;
+    }>;
   } | null;
 } | null;
 // Variable: HOME_PAGE_QUERY

@@ -9,7 +9,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             _updatedAt: string | Date;
         };
 
-        const paths: PathType[] = await client.fetch(SITEMAP_QUERY);
+        const rawPaths: { href: string | null; _updatedAt: string | Date }[] = await client.fetch(SITEMAP_QUERY);
+        const paths: PathType[] = rawPaths.map(({ href, _updatedAt }) => ({
+            href: href ?? undefined,
+            _updatedAt,
+        }));
 
         if (!paths) return [];
 

@@ -306,46 +306,42 @@ const siteSettings = {
                 },
 
                 // Social Links
-                // {
-                //     name: 'socialLinks',
-                //     title: 'Social Links',
-                //     type: 'array',
-                //     validation: Rule => Rule.max(5),
-                //     of: [
-                //         {
-                //             type: 'object',
-                //             fields: [
-                //                 {
-                //                     name: 'icon',
-                //                     title: 'Platform Icon',
-                //                     type: 'string',
-                //                     options: {
-                //                         list: [
-                //                             { title: 'Facebook', value: 'fab fa-facebook-f' },
-                //                             { title: 'GitHub', value: 'fab fa-github' },
-                //                             { title: 'Twitter', value: 'fab fa-twitter' },
-                //                             { title: 'Instagram', value: 'fab fa-instagram' },
-                //                             { title: 'LinkedIn', value: 'fab fa-linkedin-in' }
-                //                         ],
-                //                     },
-                //                     validation: Rule => Rule.required()
-                //                 },
-                //                 {
-                //                     name: 'url',
-                //                     title: 'URL',
-                //                     type: 'url',
-                //                     validation: Rule => Rule.required().uri({ scheme: ['http', 'https'] })
-                //                 },
-                //             ],
-                //             preview: {
-                //                 select: {
-                //                     icon: 'icon',
-                //                     url: 'url'
-                //                 },
-                //             }
-                //         },
-                //     ],
-                // }
+                {
+                    name: 'socialLinks',
+                    title: 'Social Links',
+                    type: 'array',
+                    validation: Rule => Rule.max(5),
+                    of: [
+                        {
+                            type: 'object',
+                            fields: [
+                                {
+                                    name: 'icon',
+                                    title: 'Platform Icon',
+                                    type: 'image',
+                                    options: { hotspot: true },
+                                    validation: Rule => Rule.required()
+                                },
+                                {
+                                    name: 'url',
+                                    title: 'URL',
+                                    type: 'url',
+                                    validation: Rule => Rule.required().uri({ scheme: ['http', 'https'] })
+                                },
+                            ],
+                            preview: {
+                                select: {
+                                    url: 'url'
+                                },
+                                prepare({ url }) {
+                                    return {
+                                        title: url
+                                    }
+                                }
+                            }
+                        },
+                    ],
+                }
             ]
         },
 

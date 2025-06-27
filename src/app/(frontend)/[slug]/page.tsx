@@ -23,23 +23,28 @@ export async function generateMetadata({
         return {}
     }
 
+    const homePage = page?.homePage;
+
+    if (!homePage) {
+        return {};
+    }
+
     const metadata: Metadata = {
-        title: page.seo.title || page.title,
-        description: page.seo.description,
+        title: homePage.seo?.title || homePage.title,
+        description: homePage.seo?.description,
     };
 
     metadata.openGraph = {
         images: {
-            url: page.seo.image
-                ? urlFor(page.seo.image).width(1200).height(630).url()
-                : `/api/og?id=${page._id}`,
+            url: homePage.seo?.image
+                ? urlFor(homePage.seo.image).width(1200).height(630).url()
+                : `/api/og?id=${homePage._id}`,
             width: 1200,
             height: 630,
         },
     };
 
-
-    if (page.seo.noIndex) {
+    if (homePage.seo?.noIndex) {
         metadata.robots = "noindex";
     }
 
@@ -48,13 +53,14 @@ export async function generateMetadata({
 
 export default async function Page({ params }: RouteProps) {
     const { data: page } = await getPage(params);
+    const homePage = page?.homePage;
 
-    return page?.content ? (
+    return homePage?.content ? (
         <>
         <PageBuilder
-            documentId={page._id}
-            documentType={page._type}
-            content={page.content}
+            documentId={homePage._id}
+            documentType={homePage._type}
+            content={homePage.content}
             />
         </>
     ) : null;
