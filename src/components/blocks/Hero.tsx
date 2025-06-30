@@ -44,16 +44,17 @@ export default function HeroBlock({
         backgroundColor: bgColor,
         textAlign: alignment,
         color: txtColor,
-        ...(bgImageUrl && {
-          backgroundImage: `url(${bgImageUrl})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        })
       }}
     >
       <div className="hero-block__container">
-        <div className='hero-block__border'></div>
+        <div className='hero-block__border' style={{
+          ...(bgImageUrl && {
+            backgroundImage: `url(${bgImageUrl})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          })
+        }}></div>
         <div className="hero-block__content">
           <PortableText value={text} />
         </div>
