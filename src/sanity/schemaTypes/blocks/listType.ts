@@ -21,16 +21,35 @@ export const listType = defineType({
             type: "array",
             of: [
                 defineField({
-                    name: "list",
-                    title: "List",
-                    type: "string",
+                    name: "listItem",
+                    title: "List Item",
+                    type: "object",
+                    fields: [
+                        defineField({
+                            name: "list",
+                            title: "List",
+                            type: "string",
+                        }),
+                        defineField({
+                            name: "description",
+                            title: "Description",
+                            type: "text",
+                            rows: 3
+                        }),
+                        defineField({
+                            name: "icon",
+                            title: "Icon",
+                            type: "image",
+                        }),
+                       
+                    ],
                 }),
             ],
         }),
     ],
     preview: {
         select: {
-            title: "title",
+            title: "listtitle",
         },
         prepare({ title }) {
             return {

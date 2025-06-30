@@ -21,14 +21,12 @@ type FeatureItem = {
 type FeaturesBlockProps = {
     title?: string;
     subTitle?: string;
-    layout?: 'oneCol' | 'twoCol';
     features?: FeatureItem[];
 };
 
 export default function FeaturesBlock({
     title,
     subTitle,
-    layout = 'twoCol',
     features = []
 }: FeaturesBlockProps) {
     return (
@@ -41,7 +39,7 @@ export default function FeaturesBlock({
                     </div>
                 )}
 
-                <div className={`features-block__items features-block__items--${layout}`}>
+                <div className={`features-block__items features-block__items--twoCol`}>
                     {features.map((feature) => (
                         <div key={feature._key} className="features-block__item">
                             {feature.icon && (

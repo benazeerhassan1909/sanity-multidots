@@ -7,6 +7,8 @@ import '@/app/css/ClientList.css';
 type ClientLogo = {
     _key?: string;
     alt?: string;
+    width?: number;
+    height?: number;
     [key: string]: unknown;
 };
 type ClientListProps = {
@@ -43,7 +45,8 @@ export default function ClientList({ title, text, logos, backgroundColor, textCo
                                     <Image
                                         src={urlFor(logo).url()}
                                         alt={logo.alt || 'Client logo'}
-                                        fill
+                                        width={logo.width || 150}
+                                        height={logo.height || 40}
                                         style={{
                                             objectFit: 'contain',
                                             objectPosition: 'center',

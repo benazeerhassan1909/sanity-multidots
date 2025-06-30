@@ -8,9 +8,15 @@
 .hero-block__container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1rem;
+    border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    padding: 4rem 1rem;
 }
-
+.hero-block__border{
+    max-width: 1200px;
+    border-bottom: 2px solid #e0e0e0;
+    margin: 0 auto;
+}
 .hero-block__content {
     max-width: 800px;
     margin: 0 auto;

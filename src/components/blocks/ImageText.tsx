@@ -15,6 +15,8 @@ type ImageTextSectionProps = {
             _type?: string;
         };
         alt?: string;
+        width?: number;
+        height?: number;
         [key: string]: unknown;
     };
     imagePosition?: 'left' | 'right';
@@ -63,13 +65,13 @@ export default function ImageTextSection({
                     )}
                 </div>
 
-                {mainImage && (
+                {mainImage && mainImage.asset && (
                     <div className="image-text-section__image-wrapper">
                         <Image
                             src={urlFor(mainImage).url()}
                             alt={mainImage.alt || ''}
-                            width={600}
-                            height={400}
+                            width={typeof mainImage.width === 'number' ? mainImage.width : 400}
+                            height={typeof mainImage.height === 'number' ? mainImage.height : 400}
                             className="image-text-section__image"
                         />
                     </div>

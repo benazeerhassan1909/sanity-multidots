@@ -32,7 +32,24 @@ const siteSettings = {
                     title: 'Favicon',
                     type: 'image',
                     options: { hotspot: true },
-                    validation: Rule => Rule.required()
+                    validation: Rule => Rule.required(),
+                    fields: [
+                        {
+                            name: 'alt',
+                            type: 'string',
+                            title: 'Alternative Text',
+                        },
+                        {
+                            name: 'width',
+                            title: 'Image Width',
+                            type: 'number'
+                        },
+                        {
+                            name: 'height',
+                            title: 'Image Height',
+                            type: 'number'
+                        },
+                    ]
                 },
                 {
                     name: 'seoDescription',
@@ -164,19 +181,70 @@ const siteSettings = {
                             name: 'footerLogo1',
                             title: 'Footer Logo 1',
                             type: 'image',
-                            options: { hotspot: true }
+                            options: { hotspot: true },
+                            fields: [
+                                {
+                                    name: 'alt',
+                                    type: 'string',
+                                    title: 'Alternative Text',
+                                },
+                                {
+                                    name: 'width',
+                                    title: 'Image Width',
+                                    type: 'number'
+                                },
+                                {
+                                    name: 'height',
+                                    title: 'Image Height',
+                                    type: 'number'
+                                },
+                            ]
                         },
                         {
                             name: 'footerLogo2',
                             title: 'Footer Logo 2',
                             type: 'image',
-                            options: { hotspot: true }
+                            options: { hotspot: true },
+                            fields: [
+                                {
+                                    name: 'alt',
+                                    type: 'string',
+                                    title: 'Alternative Text',
+                                },
+                                {
+                                    name: 'width',
+                                    title: 'Image Width',
+                                    type: 'number'
+                                },
+                                {
+                                    name: 'height',
+                                    title: 'Image Height',
+                                    type: 'number'
+                                },
+                            ]
                         },
                         {
                             name: 'footerLogo3',
                             title: 'Footer Logo 3',
                             type: 'image',
-                            options: { hotspot: true }
+                            options: { hotspot: true },
+                            fields: [
+                                {
+                                    name: 'alt',
+                                    type: 'string',
+                                    title: 'Alternative Text',
+                                },
+                                {
+                                    name: 'width',
+                                    title: 'Image Width',
+                                    type: 'number'
+                                },
+                                {
+                                    name: 'height',
+                                    title: 'Image Height',
+                                    type: 'number'
+                                },
+                            ]
                         },
                     ]
                 },
@@ -320,7 +388,24 @@ const siteSettings = {
                                     title: 'Platform Icon',
                                     type: 'image',
                                     options: { hotspot: true },
-                                    validation: Rule => Rule.required()
+                                    validation: Rule => Rule.required(),
+                                    fields: [
+                                        {
+                                            name: 'alt',
+                                            type: 'string',
+                                            title: 'Alternative Text',
+                                        },
+                                        {
+                                            name: 'width',
+                                            title: 'Image Width',
+                                            type: 'number'
+                                        },
+                                        {
+                                            name: 'height',
+                                            title: 'Image Height',
+                                            type: 'number'
+                                        },
+                                    ]
                                 },
                                 {
                                     name: 'url',

@@ -23,6 +23,7 @@ export default function HeroBlock({ text, backgroundColor, textColor, alignment 
         style={{ backgroundColor: bgColor, textAlign: alignment || 'center', color: typeof textColor === 'string' ? textColor : textColor?.hex }}
       >
         <div className="hero-block__container">
+          <div className='hero-block__border'></div>
           <div className="hero-block__content">
             <PortableText value={text} />
           </div>

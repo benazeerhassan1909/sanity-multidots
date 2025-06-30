@@ -27,6 +27,23 @@ export const imageTextSection = defineType({
             options: {
                 hotspot: true,
             },
+            fields: [
+                {
+                    name: 'alt',
+                    type: 'string',
+                    title: 'Alternative Text',
+                },
+                {
+                    name: 'width',
+                    title: 'Image Width',
+                    type: 'number'
+                },
+                {
+                    name: 'height',
+                    title: 'Image Height',
+                    type: 'number'
+                },
+            ]
         }),
         defineField({
             name: 'imagePosition',

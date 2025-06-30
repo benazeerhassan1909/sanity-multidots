@@ -4,13 +4,14 @@
 }
 
 .features-block__container {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 0 1rem;
+    display: flex;
+    flex-direction: row;
 }
 
 .features-block__header {
-    text-align: center;
     margin-bottom: 3rem;
 }
 
@@ -55,21 +56,10 @@
     color: #555;
 }
 
-/* One Column Layout */
-.features-block__items--oneCol {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.features-block__items--oneCol .features-block__item {
-    align-items: center;
-}
-
 /* Two Columns Layout */
 .features-block__items--twoCol {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
 }
 

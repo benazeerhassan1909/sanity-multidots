@@ -30,24 +30,14 @@
 }
 
 .list-block__item {
-    position: relative;
-    padding-left: 1.75rem;
+    /* padding-left: 1.75rem; */
     margin-bottom: 0.75rem;
     font-size: 1rem;
     line-height: 1.5;
     color: #444;
-}
-
-.list-block__item::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0.5rem;
-    width: 0.75rem;
-    height: 0.75rem;
-    background-color: #4f46e5;
-    /* Using indigo-600 as default */
-    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
 }
 
 /* Responsive adjustments */
@@ -66,7 +56,6 @@
 
     .list-block__item {
         font-size: 1.125rem;
-        padding-left: 2rem;
     }
 
     .list-block__item::before {

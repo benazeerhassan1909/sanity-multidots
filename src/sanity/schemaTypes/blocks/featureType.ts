@@ -15,20 +15,6 @@ export const featuresType = defineType({
             type: "string",
         }),
         defineField({
-            name: "layout",
-            title: "Layout",
-            type: "string",
-            options: {
-                list: [
-                    { title: "Two Columns", value: "twoCol" },
-                    { title: "One Column", value: "oneCol" }
-                ],
-                layout: "radio",
-                direction: "horizontal"
-            },
-            initialValue: "twoCol"
-        }),
-        defineField({
             name: "features",
             type: "array",
             of: [
@@ -94,12 +80,11 @@ export const featuresType = defineType({
             layout: "layout",
             features: "features"
         },
-        prepare({ title, layout, features }) {
+        prepare({ title, features }) {
             const featureCount = features?.length || 0;
-            const layoutName = layout === "oneCol" ? "1 Column" : "2 Columns";
             return {
                 title: title || "Features Block",
-                subtitle: `${featureCount} features (${layoutName} layout)`
+                subtitle: `${featureCount} features)`
             };
         },
     },

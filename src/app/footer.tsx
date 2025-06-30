@@ -18,7 +18,7 @@ import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
 type SocialLink = {
     _key: string;
     url?: string;
-    icon?: SanityImageSource; // Use Sanity's image type
+    icon?: (SanityImageSource & { alt?: string; width?: number; height?: number });
 };
   
 export default async function Footer() {
@@ -72,25 +72,25 @@ export default async function Footer() {
                             {footerLogos.footerLogo1 && (
                                 <Image
                                     src={footerLogos.footerLogo1 ? urlFor(footerLogos.footerLogo1)?.url() ?? '' : ''}
-                                    alt="Partner Logo 1"
-                                    width={100}
-                                    height={40}
+                                    alt={footerLogos.footerLogo1.alt || 'Partner Logo 1'}
+                                    width={footerLogos.footerLogo1.width || 100}
+                                    height={footerLogos.footerLogo1.height || 40}
                                 />
                             )}
                             {footerLogos.footerLogo2 && (
                                 <Image
                                     src={footerLogos.footerLogo2 ? urlFor(footerLogos.footerLogo2)?.url() ?? '' : ''}
-                                    alt="Partner Logo 2"
-                                    width={100}
-                                    height={40}
+                                    alt={footerLogos.footerLogo2.alt || 'Partner Logo 2'}
+                                    width={footerLogos.footerLogo2.width || 100}
+                                    height={footerLogos.footerLogo2.height || 40}
                                 />
                             )}
                             {footerLogos.footerLogo3 && (
                                 <Image
                                     src={footerLogos.footerLogo3 ? urlFor(footerLogos.footerLogo3)?.url() ?? '' : ''}
-                                    alt="Partner Logo 3"
-                                    width={100}
-                                    height={40}
+                                    alt={footerLogos.footerLogo3.alt || 'Partner Logo 3'}
+                                    width={footerLogos.footerLogo3.width || 100}
+                                    height={footerLogos.footerLogo3.height || 40}
                                 />
                             )}
                         </div>
@@ -171,9 +171,9 @@ export default async function Footer() {
                                             {link.icon && (
                                                 <Image
                                                     src={urlFor(link.icon).url()}
-                                                    alt="Social Icon"
-                                                    width={24}  // Fixed: Use number instead of string
-                                                    height={24} // Fixed: Use number instead of string
+                                                    alt={link.icon.alt || 'Social Icon'}
+                                                    width={link.icon.width || 24}
+                                                    height={link.icon.height || 24}
                                                 />
                                             )}
                                         </a>

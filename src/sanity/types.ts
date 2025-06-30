@@ -17,7 +17,6 @@ export type Features = {
   _type: "features";
   title?: string;
   subTitle?: string;
-  layout?: "twoCol" | "oneCol";
   features?: Array<{
     title?: string;
     text?: string;
@@ -109,6 +108,9 @@ export type ImageTextSection = {
     media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
+    alt?: string;
+    width?: number;
+    height?: number;
     _type: "image";
   };
   imagePosition?: "left" | "right";
@@ -140,7 +142,24 @@ export type List = {
   _type: "List";
   listtitle?: string;
   listdescription?: string;
-  lists?: Array<string>;
+  lists?: Array<{
+    list?: string;
+    description?: string;
+    icon?: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+    };
+    _type: "listItem";
+    _key: string;
+  }>;
 };
 
 export type Hero = {
@@ -213,6 +232,9 @@ export type SiteSettings = {
       media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
+      alt?: string;
+      width?: number;
+      height?: number;
       _type: "image";
     };
     seoDescription?: string;
@@ -280,6 +302,9 @@ export type SiteSettings = {
         media?: unknown;
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
+        alt?: string;
+        width?: number;
+        height?: number;
         _type: "image";
       };
       footerLogo2?: {
@@ -292,6 +317,9 @@ export type SiteSettings = {
         media?: unknown;
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
+        alt?: string;
+        width?: number;
+        height?: number;
         _type: "image";
       };
       footerLogo3?: {
@@ -304,6 +332,9 @@ export type SiteSettings = {
         media?: unknown;
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
+        alt?: string;
+        width?: number;
+        height?: number;
         _type: "image";
       };
     };
@@ -333,6 +364,9 @@ export type SiteSettings = {
         media?: unknown;
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
+        alt?: string;
+        width?: number;
+        height?: number;
         _type: "image";
       };
       url?: string;
@@ -656,6 +690,9 @@ export type FOOTER_QUERYResult = {
         media?: unknown;
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
+        alt?: string;
+        width?: number;
+        height?: number;
         _type: "image";
       };
       footerLogo2?: {
@@ -668,6 +705,9 @@ export type FOOTER_QUERYResult = {
         media?: unknown;
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
+        alt?: string;
+        width?: number;
+        height?: number;
         _type: "image";
       };
       footerLogo3?: {
@@ -680,6 +720,9 @@ export type FOOTER_QUERYResult = {
         media?: unknown;
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
+        alt?: string;
+        width?: number;
+        height?: number;
         _type: "image";
       };
     };
@@ -709,6 +752,9 @@ export type FOOTER_QUERYResult = {
         media?: unknown;
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
+        alt?: string;
+        width?: number;
+        height?: number;
         _type: "image";
       };
       url?: string;
@@ -767,7 +813,6 @@ export type HOME_PAGE_QUERYResult = {
       _type: "features";
       title?: string;
       subTitle?: string;
-      layout?: "oneCol" | "twoCol";
       features?: Array<{
         title?: string;
         text?: string;
@@ -872,6 +917,9 @@ export type HOME_PAGE_QUERYResult = {
         media?: unknown;
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
+        alt?: string;
+        width?: number;
+        height?: number;
         _type: "image";
       };
       imagePosition?: "left" | "right";
@@ -883,7 +931,24 @@ export type HOME_PAGE_QUERYResult = {
       _type: "List";
       listtitle?: string;
       listdescription?: string;
-      lists?: Array<string>;
+      lists?: Array<{
+        list?: string;
+        description?: string;
+        icon?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          _type: "image";
+        };
+        _type: "listItem";
+        _key: string;
+      }>;
     }> | null;
     mainImage?: {
       asset?: {
@@ -967,7 +1032,6 @@ export type PAGE_QUERYResult = {
       _type: "features";
       title?: string;
       subTitle?: string;
-      layout?: "oneCol" | "twoCol";
       features?: Array<{
         title?: string;
         text?: string;
@@ -1072,6 +1136,9 @@ export type PAGE_QUERYResult = {
         media?: unknown;
         hotspot?: SanityImageHotspot;
         crop?: SanityImageCrop;
+        alt?: string;
+        width?: number;
+        height?: number;
         _type: "image";
       };
       imagePosition?: "left" | "right";
@@ -1083,7 +1150,24 @@ export type PAGE_QUERYResult = {
       _type: "List";
       listtitle?: string;
       listdescription?: string;
-      lists?: Array<string>;
+      lists?: Array<{
+        list?: string;
+        description?: string;
+        icon?: {
+          asset?: {
+            _ref: string;
+            _type: "reference";
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          _type: "image";
+        };
+        _type: "listItem";
+        _key: string;
+      }>;
     }> | null;
     mainImage?: {
       asset?: {
