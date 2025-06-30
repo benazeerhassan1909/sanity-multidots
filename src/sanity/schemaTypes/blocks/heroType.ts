@@ -19,6 +19,32 @@ export const heroType = defineType({
             description: 'Choose a background color for the Hero',
             
         }),
+        // add bg image field
+        defineField({
+            name: 'bgImage',
+            title: 'Background Image',
+            type: 'image',
+            options: {
+                hotspot: true,
+            },
+            fields: [
+                {
+                    name: 'alt',
+                    title: 'Alternative Text',
+                    type: 'string',
+                },
+                {
+                    name: 'width',
+                    title: 'Image Width',
+                    type: 'number',
+                },
+                {
+                    name: 'height',
+                    title: 'Image Height',
+                    type: 'number',
+                },
+            ],
+        }),
         // text color
         defineField({
             name: 'textColor',

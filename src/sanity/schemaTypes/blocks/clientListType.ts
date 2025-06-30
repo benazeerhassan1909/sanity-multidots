@@ -54,6 +54,7 @@ export const clientList = defineType({
                     ],
                 }),
             ],
+            
         }),
     ],
     preview: {
