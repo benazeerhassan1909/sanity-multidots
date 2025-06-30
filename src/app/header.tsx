@@ -12,35 +12,37 @@ export default async function Header() {
 
 
     return (
-        <div className="header__container">
-            <div className="header__logo">
-                {logo && (
-                    <Link href="/">
+        <header className="site-header">
+            <div className="header-inner">
+                <div className="header-logo">
+                    {logo && (
+                        <Link href="/">
+                            <Image
+                                src={urlFor(logo).url()}
+                                alt={logo.alt || siteTitle || 'Logo'}
+                                width={logo.width || 150}
+                                height={logo.height || 40}
+                                priority
+                            />
+                        </Link>
+                    )}
+                </div>
+
+                {/* <nav className="header-nav"> */}
+                    {/* Add your navigation here */}
+                {/* </nav> */}
+
+                {sanityLogo && (
+                    <div className="header-sanity-logo">
                         <Image
-                            src={urlFor(logo).url()}
-                            alt={logo.alt || siteTitle || 'Logo'}
-                            width={logo.width || 150}
-                            height={logo.height || 40}
-                            priority
+                            src={urlFor(sanityLogo).url()}
+                            alt={sanityLogo.alt || 'Sanity Logo'}
+                            width={sanityLogo.width || 100}
+                            height={sanityLogo.height || 30}
                         />
-                    </Link>
+                    </div>
                 )}
             </div>
-
-            <nav className="header__nav">
-                {/* Add your navigation here */}
-            </nav>
-
-            {sanityLogo && (
-                <div className="header__sanity-logo">
-                    <Image
-                        src={urlFor(sanityLogo).url()}
-                        alt={sanityLogo.alt || 'Sanity Logo'}
-                        width={sanityLogo.width || 100}
-                        height={sanityLogo.height || 30}
-                    />
-                </div>
-            )}
-        </div>
+        </header>
     );
 }

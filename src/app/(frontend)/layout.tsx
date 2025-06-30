@@ -20,7 +20,8 @@ export default async function FrontendLayout({
         <meta name="robots" content="noindex, nofollow" />
       </Head>
       <ScrollHandler />
-      <body className="container">
+      <body>
+        <div className="container">
           <Header />
           <main className="main-content">
             {children}
@@ -32,7 +33,8 @@ export default async function FrontendLayout({
               </>
             )}
           </main>
-        <Footer />
+          <Footer />
+        </div>
       </body>
     </>
   );
