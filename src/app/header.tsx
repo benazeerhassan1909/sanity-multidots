@@ -28,9 +28,9 @@ export default async function Header() {
                     )}
                 </div>
 
-                <nav className="header-nav">
+                {/* <nav className="header-nav"> */}
                     {/* Add your navigation here */}
-                </nav>
+                {/* </nav> */}
 
                 {sanityLogo && (
                     <div className="header-sanity-logo">
