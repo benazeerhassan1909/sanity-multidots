@@ -763,7 +763,7 @@ export type FOOTER_QUERYResult = {
   } | null;
 } | null;
 // Variable: HOME_PAGE_QUERY
-// Query: *[_id == "siteSettings"][0]{  homePage->{    ...,    "seo": {    "title": coalesce(seo.title, title, ""),     "description": coalesce(seo.description,  ""),    "image": seo.image,    "noIndex": seo.noIndex == true  },    content[]{      ...,    }        }}
+// Query: *[_id == "siteSettings"][0]{  homePage->{    ...,    "seo": {    "title": coalesce(seo.title, title, ""),     "description": coalesce(seo.description,  ""),    "image": seo.image,    "noIndex": seo.noIndex == true  },    content[]{      ...,      _type == "client" => {  ...,  logo {    ...,    asset->  // This is crucial  }}    }        }}
 export type HOME_PAGE_QUERYResult = {
   homePage: null;
 } | {
@@ -1213,7 +1213,8 @@ declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"siteSettings\" && _id == \"siteSettings\"][0]{ \n  siteTitle,\n  logo,\n  sanityLogo\n  }": HEADER_QUERYResult;
     "*[_type == \"siteSettings\" && _id == \"siteSettings\"][0]{\n  footer }": FOOTER_QUERYResult;
-    "*[_id == \"siteSettings\"][0]{\n  homePage->{\n    ...,\n    \"seo\": {\n    \"title\": coalesce(seo.title, title, \"\"),\n     \"description\": coalesce(seo.description,  \"\"),\n    \"image\": seo.image,\n    \"noIndex\": seo.noIndex == true\n  },\n    content[]{\n      ...,\n    }      \n  }\n}": HOME_PAGE_QUERYResult | PAGE_QUERYResult;
+    "*[_id == \"siteSettings\"][0]{\n  homePage->{\n    ...,\n    \"seo\": {\n    \"title\": coalesce(seo.title, title, \"\"),\n     \"description\": coalesce(seo.description,  \"\"),\n    \"image\": seo.image,\n    \"noIndex\": seo.noIndex == true\n  },\n    content[]{\n      ...,\n      _type == \"client\" => {\n  ...,\n  logo {\n    ...,\n    asset->  // This is crucial\n  }\n}\n    }      \n  }\n}": HOME_PAGE_QUERYResult;
+    "*[_id == \"siteSettings\"][0]{\n  homePage->{\n    ...,\n    \"seo\": {\n    \"title\": coalesce(seo.title, title, \"\"),\n     \"description\": coalesce(seo.description,  \"\"),\n    \"image\": seo.image,\n    \"noIndex\": seo.noIndex == true\n  },\n    content[]{\n      ...,\n    }      \n  }\n}": PAGE_QUERYResult;
     "\n  *[_type in [\"page\", \"post\"] && defined(slug.current)] {\n      \"href\": select(\n        _type == \"page\" => \"/\" + slug.current,\n        _type == \"post\" => \"/posts/\" + slug.current,\n        slug.current\n      ),\n      _updatedAt\n  }\n  ": SITEMAP_QUERYResult;
   }
 }
