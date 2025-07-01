@@ -59,11 +59,34 @@ export const imageTextSection = defineType({
             initialValue: 'right',
         }),
         defineField({
-            name: 'buttons',
-            title: 'Buttons',
-            type: 'array',
-            of: [{ type: 'button' }],
-            description: 'Add one or more buttons',
+            name: 'button',
+            title: 'Button',
+            type: 'object',
+            fields: [
+                defineField({
+                    name: 'text',
+                    title: 'Button Text',
+                    type: 'string',
+                    validation: Rule => Rule.required()
+                }),
+                defineField({
+                    name: 'link',
+                    title: 'Link',
+                    type: 'url',
+                    validation: (Rule) =>
+                        Rule.uri({
+                            allowRelative: true,
+                            scheme: ['https', 'http', 'mailto', 'tel'],
+                        }).required(),
+                    description: 'Can be relative (/about) or absolute (https://...)',
+                }),
+                defineField({
+                    name: 'openInNewTab',
+                    title: 'Open in new tab?',
+                    type: 'boolean',
+                    initialValue: false,
+                }),
+            ],
         }),
     ],
     preview: {

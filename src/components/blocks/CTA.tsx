@@ -1,30 +1,27 @@
 import React from 'react';
-import Button from '@/components/Button'; // Assuming you have a Button component
 import '@/app/css/CTA.css';
+
+type ButtonProps = {
+    text: string;
+    link: string;
+    openInNewTab?: boolean;
+};
 
 type CtaBlockProps = {
     heading?: string;
     subheading?: string;
-    buttons?: Array<{
-        _key: string;
-        label: string;
-        url: string;
-        variant?: string;
-    }>;
+    button?: ButtonProps; // Changed from buttons[] to single button
     backgroundColor?: string | { hex: string };
     textColor?: string | { hex: string };
-    customBackgroundColor?: { hex: string };
 };
 
 export default function CTABlock({
     heading,
     subheading,
-    buttons,
+    button, // Now accepts single button
     backgroundColor,
     textColor,
 }: CtaBlockProps) {
-   
-
     return (
         <section className={`cta-block-main`} style={{
             backgroundColor: typeof backgroundColor === 'string'

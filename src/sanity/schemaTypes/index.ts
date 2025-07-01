@@ -7,7 +7,6 @@ import { heroType } from "./blocks/heroType";
 import { seoType } from './seoType';
 import { listType } from './blocks/listType';
 import { ctaBlockType } from './blocks/ctaType';
-import { buttonType } from './buttonType';
 import { imageTextSection } from './blocks/imageTextType';
 import { clientList } from './blocks/clientListType';
 import { featuresType } from './blocks/featureType';
@@ -24,7 +23,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     seoType,
     listType,
     ctaBlockType,
-    buttonType,
     imageTextSection,
     clientList,
     featuresType
