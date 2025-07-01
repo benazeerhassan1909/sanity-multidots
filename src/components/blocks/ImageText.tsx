@@ -37,43 +37,43 @@ export default function ImageTextSection({
     button // Now accepts single button
 }: ImageTextSectionProps) {
     return (
-        <section className={`image-text-section image-text-section--${imagePosition}`}>
-            <div className="image-text-section__header">
-                {title && <h2 className="image-text-section__title">{title}</h2>}
-                {subTitle && <p className="image-text-section__subtitle">{subTitle}</p>}
-            </div>
-            <div className="image-text-section__container">
-                <div className="image-text-section__content">
-                    {description && (
-                        <div className="image-text-section__description">
-                            <PortableText value={description} />
-                        </div>
-                    )}
-                    {button && (
-                        <div className="image-text-section__button-wrapper">
-                            <a
-                                href={button.link}
-                                className="image-text-section__button"
-                                target={button.openInNewTab ? "_blank" : "_self"}
-                                rel={button.openInNewTab ? "noopener noreferrer" : undefined}
-                            >
-                                {button.text}
-                            </a>
+        <section className={`image-text-section-main image-text-section--${imagePosition}`}>
+            <div className='image-text-section-inner'>
+                {title && <h2 className="image-text-section-title">{title}</h2>}
+                {subTitle && <p className="image-text-section-subtitle">{subTitle}</p>}
+                <div className="image-text-section-details">
+                    <div className="image-text-section-content">
+                        {description && (
+                            <div className="image-text-section-description">
+                                <PortableText value={description} />
+                            </div>
+                        )}
+                        {button && (
+                            <div className="image-text-section-button">
+                                <a
+                                    href={button.link}
+                                    className="image-text-section-button-text"
+                                    target={button.openInNewTab ? "_blank" : "_self"}
+                                    rel={button.openInNewTab ? "noopener noreferrer" : undefined}
+                                >
+                                    {button.text}
+                                </a>
+                            </div>
+                        )}
+                    </div>
+
+                    {mainImage && mainImage.asset && (
+                        <div className="image-text-section-image">
+                            <Image
+                                src={urlFor(mainImage).url()}
+                                alt={mainImage.alt || ''}
+                                width={typeof mainImage.width === 'number' ? mainImage.width : 620}
+                                height={typeof mainImage.height === 'number' ? mainImage.height : 310}
+                                className="image-text-section-image-img"
+                            />
                         </div>
                     )}
                 </div>
-
-                {mainImage && mainImage.asset && (
-                    <div className="image-text-section__image-wrapper">
-                        <Image
-                            src={urlFor(mainImage).url()}
-                            alt={mainImage.alt || ''}
-                            width={typeof mainImage.width === 'number' ? mainImage.width : 400}
-                            height={typeof mainImage.height === 'number' ? mainImage.height : 400}
-                            className="image-text-section__image"
-                        />
-                    </div>
-                )}
             </div>
         </section>
     );

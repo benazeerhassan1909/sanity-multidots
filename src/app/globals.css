@@ -92,7 +92,7 @@ footer.site-footer .footer-top {
 }
 
 footer.site-footer .footer-top-left .footer-logo {
-    margin: 0 0 30px 0;
+    margin: 0 0 35px 0;
 }
 
 footer.site-footer .footer-top-left .footer-logo img {
@@ -108,7 +108,7 @@ footer.site-footer .footer-top-left .footer-email {
     font-size: 32px;
     line-height: 100%;
     color: #0A0B0C;
-    margin: 0 0 30px 0;
+    margin: 0 0 35px 0;
     text-decoration: underline;
     text-decoration-color: #E8FF00;
 }
@@ -125,7 +125,7 @@ footer.site-footer .footer-top-left .footer-schedule-link {
 
 footer.site-footer .footer-top-left .footer-partner-logos {
     display: flex;
-    gap: 40px;
+    gap: 35px;
     align-items: center;
     justify-content: space-between;
 }
@@ -134,11 +134,11 @@ footer.site-footer .footer-top-left .footer-partner-logos img {
     height: 80px;
     width: auto;
 }
-footer.site-footer .footer-top-right {max-width: 510px;}
+footer.site-footer .footer-top-right {max-width: 490px;margin: 75px 0 0 0;}
 footer.site-footer .footer-address{margin: 0 0 40px 0;}
 footer.site-footer .footer-top-right .footer-address-inner {
     display: flex;
-    gap: 55px;
+    gap: 45px;
 }
 
 footer.site-footer .footer-top-right .footer-address-box .footer-location-title {
@@ -146,7 +146,7 @@ footer.site-footer .footer-top-right .footer-address-box .footer-location-title 
     line-height: 100%;
     color: #0A0B0C;
     font-weight: 600;
-    margin: 0 0 15px 0;
+    margin: 0 0 20px 0;
     display: table;
 }
 
@@ -172,6 +172,10 @@ footer.site-footer .footer-top-right .footer-menu-item:last-child::after{display
 footer.site-footer .footer-top-right .footer-menu-item a{color: #303034;text-decoration: none;}
 footer.site-footer .footer-bottom {padding: 24px 55px;border-top: 1px solid #AFAFAF;}
 footer.site-footer .footer-bottom-inner{display: flex;align-items: center;justify-content: space-between;gap: 20px;}
-footer.site-footer .footer-bottom .footer-copyright p{margin: 0;}
+footer.site-footer .footer-bottom .footer-copyright p{margin: 0;font-size: 16px;color: rgba(48, 48, 52, 0.7);line-height: 100%;}
 footer.site-footer .footer-bottom .footer-social-inner{display: flex;gap: 40px;align-items: center;}
+footer.site-footer .footer-bottom .footer-social-inner img{
+    height: 20px;
+    width: auto;
+}
 /* footer css end */

@@ -8,7 +8,9 @@
     margin-left: -50vw !important;
     margin-right: -50vw !important;
 }
-.client-list-main .client-list-title{color: #FFF;text-align: center;margin: 0 0 50px 0;}
+.client-list-main .client-list-title{color: #FFF;text-align: center;margin: 0 auto 50px;position: relative;display: table;}
+.client-list-main .client-list-title::before{content: "";background-image: url(../images/title-border-design-image.svg);background-repeat: no-repeat;background-size: contain;width: 215px;height: 78px;position: absolute;    top: -15px;
+    left: 93px;}
 .client-list-main .client-list-grid{    display: grid
     ;
         grid-template-columns: repeat(4, 1fr);
@@ -16,7 +18,7 @@
         align-items: center;
         row-gap: 0;
         column-gap: 0;}
-.client-list-main .client-list-logo{border: 1px solid rgba(255, 255, 255, 0.06);padding: 40px 20px;display: flex;align-items: center;justify-content: center;}
+.client-list-main .client-list-logo{border: 1px solid rgba(255, 255, 255, 0.06);padding: 45px 20px;display: flex;align-items: center;justify-content: center;}
 .client-list-main .client-list-logo:nth-child(4n + 1){border-left: 0;}
 .client-list-main .client-list-logo:nth-child(4n + 4){border-right: 0;}
 .client-list-main .client-list-logo:nth-child(-n+4){border-top: 0;}

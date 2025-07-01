@@ -34,6 +34,10 @@
     align-items: center;
     justify-content: center;
 }
+.features-section-main .features-block-items .features-block-image img{
+    width: 100%;
+    height: auto;
+}
 
 .features-section-main .features-block-items .features-block-item-title {
     margin: 30px 0 15px 0;
