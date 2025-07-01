@@ -26,34 +26,29 @@ export default function CTABlock({
    
 
     return (
-        <section
-            className={`cta-block`} >
-            <div className="cta-block__container"
-                style={{
-                    backgroundColor: typeof backgroundColor === 'string'
-                        ? backgroundColor
-                        : backgroundColor?.hex || 'transparent',
-                    color: typeof textColor === 'string' ? textColor : textColor?.hex
-                }}
-            >
-                <div className="cta-block__content">
-                {heading && <h2 className="cta-block__heading">{heading}</h2>}
-                    {subheading && <p className="cta-block__subheading">{subheading}</p>}
-                </div>
-
-                {buttons && buttons.length > 0 && (
-                    <div className="cta-block__buttons">
-                        {buttons.map((button) => (
-                            <Button
-                                key={button._key}
-                                href={button.url}
-                            >
-                                {button.label}
-                            </Button>
-                        ))}
-                    </div>
-                )}
+        <section className={`cta-block-main`} style={{
+            backgroundColor: typeof backgroundColor === 'string'
+                ? backgroundColor
+                : backgroundColor?.hex || 'transparent',
+            color: typeof textColor === 'string' ? textColor : textColor?.hex
+        }} >
+            <div className="cta-block-content">
+            {heading && <h2 className="cta-block-heading">{heading}</h2>}
+                {subheading && <p className="cta-block-description">{subheading}</p>}
             </div>
+
+            {buttons && buttons.length > 0 && (
+                <div className="cta-block-buttons">
+                    {buttons.map((button) => (
+                        <Button
+                            key={button._key}
+                            href={button.url}
+                        >
+                            {button.label}
+                        </Button>
+                    ))}
+                </div>
+            )}
         </section>
     );
 }
