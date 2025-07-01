@@ -1,6 +1,5 @@
 import React from 'react';
 import { PortableText } from '@portabletext/react';
-import { urlFor } from '@/sanity/lib/image';
 import '@/app/css/Hero.css';
 import type { TypedObject } from '@portabletext/types';
 
@@ -35,7 +34,6 @@ export default function HeroBlock({
     : textColor?.hex;
 
   // Generate background image URL if available
-  const bgImageUrl = bgImage?.asset ? urlFor(bgImage).url() : undefined;
   console.log(bgImage);
   return text ? (
     <section
@@ -47,14 +45,7 @@ export default function HeroBlock({
       }}
     >
       <div className="hero-block__container">
-        <div className='hero-block__border' style={{
-          ...(bgImageUrl && {
-            backgroundImage: `url(${bgImageUrl})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          })
-        }}></div>
+        <div className='hero-block__border'></div>
         <div className="hero-block__content">
           <PortableText value={text} />
         </div>
