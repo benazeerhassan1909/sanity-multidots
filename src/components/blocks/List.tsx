@@ -23,18 +23,18 @@ export default function ListBlock({
     lists = []
 }: ListBlockProps) {
     return (
-        <section className="list-block">
-            <div className="list-block__container">
-                {listtitle && <h2 className="list-block__title">{listtitle}</h2>}
-                {listdescription && <p className="list-block__description">{listdescription}</p>}
+        <section className="list-block-main">
+            <div className="list-block-inner">
+                {listtitle && <h2 className="list-block-title">{listtitle}</h2>}
+                {listdescription && <p className="list-block-description">{listdescription}</p>}
 
                 {lists.length > 0 && (
-                    <ul className="list-block__items">
+                    <ul className="list-block-items">
                         {lists.map((item) => (
-                            <li key={item._key} className="list-block__item">
+                            <li key={item._key} className="list-block-item">
                                 {/* Icon (if exists) */}
                                 {item.icon && (
-                                    <div className="list-block__icon">
+                                    <div className="list-block-icon">
                                         <Image
                                             src={urlFor(item.icon).url()}
                                             alt="List icon"
@@ -45,10 +45,10 @@ export default function ListBlock({
                                 )}
 
                                 {/* Main list text */}
-                                <div className="list-block__content">
-                                    {item.list && <h3 className="list-block__item-title">{item.list}</h3>}
+                                <div className="list-block-content">
+                                    {item.list && <h3 className="list-block-item-title">{item.list}</h3>}
                                     {item.description && (
-                                        <p className="list-block__item-description">{item.description}</p>
+                                        <p className="list-block-item-description">{item.description}</p>
                                     )}
                                 </div>
                             </li>

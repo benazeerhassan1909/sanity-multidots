@@ -38,18 +38,18 @@ export default function ClientList({
 
     return (
         <section
-            className="client-list"
+            className="client-list-main"
             style={{
                 backgroundColor: bgColor,
                 color: txtColor,
             }}
         >
-            <div className="client-list__container">
-                {title && <h2 className="client-list__title">{title}</h2>}
-                {text && <p className="client-list__text">{text}</p>}
+            <div className="container">
+                {title && <h2 className="client-list-title">{title}</h2>}
+                {text && <p className="client-list-text">{text}</p>}
 
                 {logos.length > 0 && (
-                    <div className="client-list__grid">
+                    <div className="client-list-grid">
                         {logos.map((logo) => {
                             // Skip if no image asset exists
                             if (!logo.asset) return null;
@@ -58,8 +58,8 @@ export default function ClientList({
                             if (!imageUrl) return null;
 
                             return (
-                                <div key={logo._key} className="client-list__logo-container">
-                                    <div className="client-list__logo-wrapper">
+                                <div key={logo._key} className="client-list-logo">
+                                    <div className="client-list-logo-image">
                                         <Image
                                             src={imageUrl}
                                             alt={logo.alt || 'Client logo'}
