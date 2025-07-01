@@ -38,7 +38,7 @@ export default function CTABlock({
                 <div className="cta-block-buttons">
                     <a
                         href={button.link}
-                        className="image-text-section__button"
+                        className="cta-block-buttons-text"
                         target={button.openInNewTab ? "_blank" : "_self"}
                         rel={button.openInNewTab ? "noopener noreferrer" : undefined}
                     >
