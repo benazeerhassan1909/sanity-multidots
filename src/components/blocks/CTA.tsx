@@ -34,16 +34,16 @@ export default function CTABlock({
                 {subheading && <p className="cta-block-description">{subheading}</p>}
             </div>
 
-            {buttons && buttons.length > 0 && (
+            {button && (
                 <div className="cta-block-buttons">
-                    {buttons.map((button) => (
-                        <Button
-                            key={button._key}
-                            href={button.url}
-                        >
-                            {button.label}
-                        </Button>
-                    ))}
+                    <a
+                        href={button.link}
+                        className="image-text-section__button"
+                        target={button.openInNewTab ? "_blank" : "_self"}
+                        rel={button.openInNewTab ? "noopener noreferrer" : undefined}
+                    >
+                        {button.text}
+                    </a>
                 </div>
             )}
         </section>
