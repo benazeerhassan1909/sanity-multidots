@@ -1,5 +1,6 @@
 import {defineType, defineArrayMember} from 'sanity'
 import {ImageIcon} from '@sanity/icons'
+import { ReactNode, FC } from 'react';
 
 /**
  * This is the schema type for block content used in the post document type
@@ -11,7 +12,13 @@ import {ImageIcon} from '@sanity/icons'
  *    type: 'blockContent'
  *  }
  */
+interface HighlightDecoratorProps {
+  children: ReactNode;
+}
 
+const HighlightDecorator: FC<HighlightDecoratorProps> = (props) => (
+  <span style={{ backgroundColor: 'yellow' }}>{props.children}</span>
+)
 export const blockContentType = defineType({
   title: 'Block Content',
   name: 'blockContent',
@@ -30,6 +37,7 @@ export const blockContentType = defineType({
         {title: 'H3', value: 'h3'},
         {title: 'H4', value: 'h4'},
         { title: 'Quote', value: 'blockquote' },
+        
         // 👇 Add text alignment styles
         { title: 'Align Left', value: 'left' },
         { title: 'Align Center', value: 'center' },
@@ -42,7 +50,10 @@ export const blockContentType = defineType({
         // preference or highlighting
         decorators: [
           {title: 'Strong', value: 'strong'},
-          {title: 'Emphasis', value: 'em'},
+          { title: 'Emphasis', value: 'em' },
+          {
+            title: 'Span', value: 'span', icon: () => 'Span', component: HighlightDecorator
+          },
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
