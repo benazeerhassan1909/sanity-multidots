@@ -2,13 +2,18 @@ import React from 'react';
 import { PortableText } from '@portabletext/react';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
-import Button from '@/components/Button';
 import '@/app/css/ImageText.css';
+
+type ButtonProps = {
+    text: string;
+    link: string;
+    openInNewTab?: boolean;
+};
 
 type ImageTextSectionProps = {
     title?: string;
     subTitle?: string;
-    description?: import('@portabletext/types').PortableTextBlock[]; // PortableText/BlockContent data
+    description?: import('@portabletext/types').PortableTextBlock[];
     mainImage?: {
         asset?: {
             _ref?: string;
@@ -20,12 +25,7 @@ type ImageTextSectionProps = {
         [key: string]: unknown;
     };
     imagePosition?: 'left' | 'right';
-    buttons?: Array<{
-        _key: string;
-        label: string;
-        url: string;
-        variant?: string;
-    }>;
+    button?: ButtonProps; // Changed from buttons[] to single button
 };
 
 export default function ImageTextSection({
@@ -34,7 +34,7 @@ export default function ImageTextSection({
     description,
     mainImage,
     imagePosition = 'right',
-    buttons = []
+    button // Now accepts single button
 }: ImageTextSectionProps) {
     return (
         <section className={`image-text-section image-text-section--${imagePosition}`}>
@@ -49,18 +49,16 @@ export default function ImageTextSection({
                             <PortableText value={description} />
                         </div>
                     )}
-                    {buttons.length > 0 && (
-                        <div className="image-text-section__buttons">
-                            {buttons.map((button) => (
-                                button.url && button.label &&
-
-                                <Button
-                                    key={button._key}
-                                    href={button.url}
-                                >
-                                    {button.label}
-                                </Button>
-                            ))}
+                    {button && (
+                        <div className="image-text-section__button-wrapper">
+                            <a
+                                href={button.link}
+                                className="image-text-section__button"
+                                target={button.openInNewTab ? "_blank" : "_self"}
+                                rel={button.openInNewTab ? "noopener noreferrer" : undefined}
+                            >
+                                {button.text}
+                            </a>
                         </div>
                     )}
                 </div>

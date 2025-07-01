@@ -1,34 +1,31 @@
 import React from 'react';
-import Button from '@/components/Button'; // Assuming you have a Button component
 import '@/app/css/CTA.css';
+
+type ButtonProps = {
+    text: string;
+    link: string;
+    openInNewTab?: boolean;
+};
 
 type CtaBlockProps = {
     heading?: string;
     subheading?: string;
-    buttons?: Array<{
-        _key: string;
-        label: string;
-        url: string;
-        variant?: string;
-    }>;
+    button?: ButtonProps; // Changed from buttons[] to single button
     backgroundColor?: string | { hex: string };
     textColor?: string | { hex: string };
-    customBackgroundColor?: { hex: string };
 };
 
 export default function CTABlock({
     heading,
     subheading,
-    buttons,
+    button, // Now accepts single button
     backgroundColor,
     textColor,
 }: CtaBlockProps) {
-   
-
     return (
-        <section
-            className={`cta-block`} >
-            <div className="cta-block__container"
+        <section className="cta-block">
+            <div
+                className="cta-block__container"
                 style={{
                     backgroundColor: typeof backgroundColor === 'string'
                         ? backgroundColor
@@ -37,20 +34,20 @@ export default function CTABlock({
                 }}
             >
                 <div className="cta-block__content">
-                {heading && <h2 className="cta-block__heading">{heading}</h2>}
+                    {heading && <h2 className="cta-block__heading">{heading}</h2>}
                     {subheading && <p className="cta-block__subheading">{subheading}</p>}
                 </div>
 
-                {buttons && buttons.length > 0 && (
-                    <div className="cta-block__buttons">
-                        {buttons.map((button) => (
-                            <Button
-                                key={button._key}
-                                href={button.url}
-                            >
-                                {button.label}
-                            </Button>
-                        ))}
+                {button && (
+                    <div className="cta-block__button-wrapper">
+                        <a
+                            href={button.link}
+                            className="cta-block__button"
+                            target={button.openInNewTab ? "_blank" : "_self"}
+                            rel={button.openInNewTab ? "noopener noreferrer" : undefined}
+                        >
+                            {button.text}
+                        </a>
                     </div>
                 )}
             </div>

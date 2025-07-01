@@ -1,4 +1,3 @@
-import { defineField } from "sanity";
 const siteSettings = {
     name: 'siteSettings',
     title: 'Site Settings',
@@ -162,13 +161,6 @@ const siteSettings = {
                     type: 'url',
                     validation: Rule => Rule.uri({ scheme: ['http', 'https'] })
                 },
-                defineField({
-                    name: 'buttons',
-                    title: 'Buttons',
-                    type: 'array',
-                    of: [{ type: 'button' }],
-                    description: 'Add one or more buttons',
-                }),
 
                 // Footer Logos Group
                 {
