@@ -5,10 +5,13 @@
 .hero-block-content h1{font-weight:400;}
 .hero-block-content h1 span{background-color:#E8FF00;font-weight:600;}
 @media only screen and (max-width:1024px){
-    .hero-block-main{margin:0 auto 80px;}
+	.hero-block-main{margin:0 auto 80px;}
 	.hero-block-content{padding:50px 30px;}
 }
 @media only screen and (max-width:767px){
-    .hero-block-main{margin:0 auto 50px;}
-    .hero-block-content{padding:20px 30px;}
+	.hero-block-main{margin:0 auto 50px;}
+	.hero-block-content{padding:20px 30px;}
+}
+@media only screen and (max-width:420px){
+	.hero-block-content{padding:15px 15px;}
 }
