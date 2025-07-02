@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { urlFor } from '@/sanity/lib/image';
 import '@/app/css/ClientList.css';
 import { SanityImageSource } from '@sanity/image-url/lib/types/types';
+import Link from 'next/link';
 
 type ClientLogo = {
     _key: string;
@@ -10,6 +11,7 @@ type ClientLogo = {
     width?: number;
     height?: number;
     asset?: SanityImageSource;
+    url?: string;
 };
 
 type ClientListProps = {
@@ -60,17 +62,33 @@ export default function ClientList({
                             return (
                                 <div key={logo._key} className="client-list-logo">
                                     <div className="client-list-logo-image">
-                                        <Image
-                                            src={imageUrl}
-                                            alt={logo.alt || 'Client logo'}
-                                            width={logo.width || 150}
-                                            height={logo.height || 40}
-                                            style={{
-                                                objectFit: 'contain',
-                                                objectPosition: 'center',
-                                            }}
-                                            sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 20vw"
-                                        />
+                                        {logo.url ? (
+                                            <Link href={logo.url}>
+                                                <Image
+                                                    src={imageUrl}
+                                                    alt={logo.alt || 'Client logo'}
+                                                    width={logo.width || 150}
+                                                    height={logo.height || 40}
+                                                    style={{
+                                                        objectFit: 'contain',
+                                                        objectPosition: 'center',
+                                                    }}
+                                                    sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 20vw"
+                                                />
+                                            </Link>
+                                        ) : (
+                                            <Image
+                                                src={imageUrl}
+                                                alt={logo.alt || 'Client logo'}
+                                                width={logo.width || 150}
+                                                height={logo.height || 40}
+                                                style={{
+                                                    objectFit: 'contain',
+                                                    objectPosition: 'center',
+                                                }}
+                                                sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 20vw"
+                                            />
+                                        )}
                                     </div>
                                 </div>
                             );
