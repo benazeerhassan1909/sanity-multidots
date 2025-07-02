@@ -67,28 +67,34 @@ export default async function Footer() {
                     {(footerLogos.footerLogo1 || footerLogos.footerLogo2 || footerLogos.footerLogo3) && (
                         <div className="footer-partner-logos">
                             {footerLogos.footerLogo1 && (
-                                <Image
-                                    src={footerLogos.footerLogo1 ? urlFor(footerLogos.footerLogo1)?.url() ?? '' : ''}
-                                    alt={footerLogos.footerLogo1.alt || 'Partner Logo 1'}
-                                    width={footerLogos.footerLogo1.width || 100}
-                                    height={footerLogos.footerLogo1.height || 40}
-                                />
+                                <Link href={footerLogos.footerLogo1.url ?? '#'}>
+                                    <Image
+                                        src={footerLogos.footerLogo1 ? urlFor(footerLogos.footerLogo1)?.url() ?? '' : ''}
+                                        alt={footerLogos.footerLogo1.alt || 'Partner Logo 1'}
+                                        width={footerLogos.footerLogo1.width || 100}
+                                        height={footerLogos.footerLogo1.height || 40}
+                                    />
+                                </Link>
                             )}
                             {footerLogos.footerLogo2 && (
-                                <Image
-                                    src={footerLogos.footerLogo2 ? urlFor(footerLogos.footerLogo2)?.url() ?? '' : ''}
-                                    alt={footerLogos.footerLogo2.alt || 'Partner Logo 2'}
-                                    width={footerLogos.footerLogo2.width || 100}
-                                    height={footerLogos.footerLogo2.height || 40}
-                                />
+                                <Link href={footerLogos.footerLogo2.url ?? '#'}>
+                                    <Image
+                                        src={footerLogos.footerLogo2 ? urlFor(footerLogos.footerLogo2)?.url() ?? '' : ''}
+                                        alt={footerLogos.footerLogo2.alt || 'Partner Logo 2'}
+                                        width={footerLogos.footerLogo2.width || 100}
+                                        height={footerLogos.footerLogo2.height || 40}
+                                    />
+                                </Link>
                             )}
                             {footerLogos.footerLogo3 && (
-                                <Image
-                                    src={footerLogos.footerLogo3 ? urlFor(footerLogos.footerLogo3)?.url() ?? '' : ''}
-                                    alt={footerLogos.footerLogo3.alt || 'Partner Logo 3'}
-                                    width={footerLogos.footerLogo3.width || 100}
-                                    height={footerLogos.footerLogo3.height || 40}
-                                />
+                                <Link href={footerLogos.footerLogo3.url ?? '#'}>
+                                    <Image
+                                        src={footerLogos.footerLogo3 ? urlFor(footerLogos.footerLogo3)?.url() ?? '' : ''}
+                                        alt={footerLogos.footerLogo3.alt || 'Partner Logo 3'}
+                                        width={footerLogos.footerLogo3.width || 100}
+                                        height={footerLogos.footerLogo3.height || 40}
+                                    />
+                                </Link>
                             )}
                         </div>
                     )}

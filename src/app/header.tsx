@@ -28,18 +28,16 @@ export default async function Header() {
                     )}
                 </div>
 
-                {/* <nav className="header-nav"> */}
-                    {/* Add your navigation here */}
-                {/* </nav> */}
-
-                {sanityLogo && (
+                {sanityLogo && sanityLogo.url && (
                     <div className="header-sanity-logo">
-                        <Image
-                            src={urlFor(sanityLogo).url()}
-                            alt={sanityLogo.alt || 'Sanity Logo'}
-                            width={sanityLogo.width || 100}
-                            height={sanityLogo.height || 30}
-                        />
+                        <Link href={sanityLogo.url}>
+                            <Image
+                                src={urlFor(sanityLogo).url()}
+                                alt={sanityLogo.alt || 'Sanity Logo'}
+                                width={sanityLogo.width || 100}
+                                height={sanityLogo.height || 30}
+                            />
+                        </Link>
                     </div>
                 )}
             </div>

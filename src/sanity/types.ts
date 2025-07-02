@@ -114,25 +114,22 @@ export type ImageTextSection = {
     _type: "image";
   };
   imagePosition?: "left" | "right";
-  buttons?: Array<{
-    _key: string;
-  } & Button>;
-};
-
-export type Button = {
-  _type: "button";
-  text?: string;
-  link?: string;
-  openInNewTab?: boolean;
+  button?: {
+    text?: string;
+    link?: string;
+    openInNewTab?: boolean;
+  };
 };
 
 export type CtaBlock = {
   _type: "ctaBlock";
   heading?: string;
   subheading?: string;
-  buttons?: Array<{
-    _key: string;
-  } & Button>;
+  button?: {
+    text?: string;
+    link?: string;
+    openInNewTab?: boolean;
+  };
   backgroundColor?: Color;
   customBackgroundColor?: Color;
   textColor?: Color;
@@ -196,21 +193,6 @@ export type Hero = {
     _key: string;
   }>;
   backgroundColor?: Color;
-  bgImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    width?: number;
-    height?: number;
-    _type: "image";
-  };
   textColor?: Color;
   alignment?: "left" | "center" | "right";
 };
@@ -282,6 +264,7 @@ export type SiteSettings = {
     alt?: string;
     width?: number;
     height?: number;
+    url?: string;
     _type: "image";
   };
   footer?: {
@@ -303,9 +286,6 @@ export type SiteSettings = {
     email?: string;
     scheduleMeetingTitle?: string;
     scheduleMeetingUrl?: string;
-    buttons?: Array<{
-      _key: string;
-    } & Button>;
     footerLogos?: {
       footerLogo1?: {
         asset?: {
@@ -320,6 +300,7 @@ export type SiteSettings = {
         alt?: string;
         width?: number;
         height?: number;
+        url?: string;
         _type: "image";
       };
       footerLogo2?: {
@@ -335,6 +316,7 @@ export type SiteSettings = {
         alt?: string;
         width?: number;
         height?: number;
+        url?: string;
         _type: "image";
       };
       footerLogo3?: {
@@ -350,6 +332,7 @@ export type SiteSettings = {
         alt?: string;
         width?: number;
         height?: number;
+        url?: string;
         _type: "image";
       };
     };
@@ -631,7 +614,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = Features | ClientList | ImageTextSection | Button | CtaBlock | List | Hero | PageBuilder | SiteSettings | Page | Seo | BlockContent | Color | RgbaColor | HsvaColor | HslaColor | MediaTag | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = Features | ClientList | ImageTextSection | CtaBlock | List | Hero | PageBuilder | SiteSettings | Page | Seo | BlockContent | Color | RgbaColor | HsvaColor | HslaColor | MediaTag | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: HEADER_QUERY
@@ -666,6 +649,7 @@ export type HEADER_QUERYResult = {
     alt?: string;
     width?: number;
     height?: number;
+    url?: string;
     _type: "image";
   } | null;
 } | null;
@@ -691,9 +675,6 @@ export type FOOTER_QUERYResult = {
     email?: string;
     scheduleMeetingTitle?: string;
     scheduleMeetingUrl?: string;
-    buttons?: Array<{
-      _key: string;
-    } & Button>;
     footerLogos?: {
       footerLogo1?: {
         asset?: {
@@ -708,6 +689,7 @@ export type FOOTER_QUERYResult = {
         alt?: string;
         width?: number;
         height?: number;
+        url?: string;
         _type: "image";
       };
       footerLogo2?: {
@@ -723,6 +705,7 @@ export type FOOTER_QUERYResult = {
         alt?: string;
         width?: number;
         height?: number;
+        url?: string;
         _type: "image";
       };
       footerLogo3?: {
@@ -738,6 +721,7 @@ export type FOOTER_QUERYResult = {
         alt?: string;
         width?: number;
         height?: number;
+        url?: string;
         _type: "image";
       };
     };
@@ -817,9 +801,11 @@ export type HOME_PAGE_QUERYResult = {
       _type: "ctaBlock";
       heading?: string;
       subheading?: string;
-      buttons?: Array<{
-        _key: string;
-      } & Button>;
+      button?: {
+        text?: string;
+        link?: string;
+        openInNewTab?: boolean;
+      };
       backgroundColor?: Color;
       customBackgroundColor?: Color;
       textColor?: Color;
@@ -884,21 +870,6 @@ export type HOME_PAGE_QUERYResult = {
         _key: string;
       }>;
       backgroundColor?: Color;
-      bgImage?: {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        width?: number;
-        height?: number;
-        _type: "image";
-      };
       textColor?: Color;
       alignment?: "center" | "left" | "right";
     } | {
@@ -953,9 +924,11 @@ export type HOME_PAGE_QUERYResult = {
         _type: "image";
       };
       imagePosition?: "left" | "right";
-      buttons?: Array<{
-        _key: string;
-      } & Button>;
+      button?: {
+        text?: string;
+        link?: string;
+        openInNewTab?: boolean;
+      };
     } | {
       _key: string;
       _type: "List";
@@ -1051,9 +1024,11 @@ export type PAGE_QUERYResult = {
       _type: "ctaBlock";
       heading?: string;
       subheading?: string;
-      buttons?: Array<{
-        _key: string;
-      } & Button>;
+      button?: {
+        text?: string;
+        link?: string;
+        openInNewTab?: boolean;
+      };
       backgroundColor?: Color;
       customBackgroundColor?: Color;
       textColor?: Color;
@@ -1118,21 +1093,6 @@ export type PAGE_QUERYResult = {
         _key: string;
       }>;
       backgroundColor?: Color;
-      bgImage?: {
-        asset?: {
-          _ref: string;
-          _type: "reference";
-          _weak?: boolean;
-          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-        };
-        media?: unknown;
-        hotspot?: SanityImageHotspot;
-        crop?: SanityImageCrop;
-        alt?: string;
-        width?: number;
-        height?: number;
-        _type: "image";
-      };
       textColor?: Color;
       alignment?: "center" | "left" | "right";
     } | {
@@ -1187,9 +1147,11 @@ export type PAGE_QUERYResult = {
         _type: "image";
       };
       imagePosition?: "left" | "right";
-      buttons?: Array<{
-        _key: string;
-      } & Button>;
+      button?: {
+        text?: string;
+        link?: string;
+        openInNewTab?: boolean;
+      };
     } | {
       _key: string;
       _type: "List";
