@@ -20,27 +20,26 @@
 .features-section-main .features-block-items {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 40px 40px;
+    gap: 15px 40px;
 }
 .features-section-main .features-block-item:nth-child(even){
-    margin-top: 50px;
+    margin-top: 60px;
 }
 .features-section-main .features-block-items .features-block-image {
     background: #FFF;
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.08);
     border-radius: 10px;
-    padding: 20px 20px;
+    padding: 0 20px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .features-section-main .features-block-items .features-block-image img{
     width: 100%;
-    height: auto;
 }
 
 .features-section-main .features-block-items .features-block-item-title {
-    margin: 30px 0 15px 0;
+    margin: 35px 0 18px 0;
 }
 
 .features-section-main .features-block-items .features-block-item-text {
