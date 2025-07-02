@@ -4,12 +4,23 @@ import { TextIcon } from "@sanity/icons";
 export const heroType = defineType({
     name: "hero",
     type: "object",
+    groups: [
+        {
+            name: "content",
+            title: "Content",
+        },
+        {
+            name: "style",
+            title: "Style",
+        },
+    ],
     fields: [
         defineField({
             name: "text",
             type: "blockContent",
             title: "Hero Text",
             description: "Text to display in the Hero section",
+            group: "content",
         }),
         // add background color
         defineField({
@@ -17,6 +28,7 @@ export const heroType = defineType({
             title: 'Background Color',
             type: 'color',
             description: 'Choose a background color for the Hero',
+            group: "style",
             
         }),
         // text color
@@ -25,6 +37,7 @@ export const heroType = defineType({
             title: 'Text Color',
             type: 'color',
             description: 'Choose a text color for the Hero',
+            group: "style",
         }),
         //alignment
         defineField({
@@ -37,6 +50,7 @@ export const heroType = defineType({
                 layout: "radio",                        
             },
             initialValue: "center",
+            group: "style",
         }),
     ],
     icon: TextIcon,

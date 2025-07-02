@@ -3,6 +3,17 @@ import { defineType, defineField } from 'sanity'
 export const ctaBlockType = defineType({
     name: 'ctaBlock',
     title: 'CTA Block',
+    description: 'A block for call to action content',
+    groups: [
+        {
+            name: "content",
+            title: "Content",
+        },
+        {
+            name: "style",
+            title: "Style",
+        },
+    ],
     type: 'object',
     fields: [
         defineField({
@@ -10,6 +21,7 @@ export const ctaBlockType = defineType({
             title: 'Heading',
             type: 'string',
             description: 'Main heading for the CTA',
+            group: "content",
         }),
         defineField({
             name: 'subheading',
@@ -17,10 +29,12 @@ export const ctaBlockType = defineType({
             type: 'text',
             description: 'Optional subheading text',
             rows: 3,
+            group: "content",
         }),
         defineField({
             name: 'button',
             title: 'Button',
+            group: "content",
             type: 'object',
             fields: [
                 defineField({
@@ -53,6 +67,10 @@ export const ctaBlockType = defineType({
             title: 'Background Color',
             type: 'color',
             description: 'Choose a background color for the CTA',
+            group: "style",
+            options: {
+                disableAlpha: true,
+            },
             
         }),
         defineField({
@@ -61,12 +79,14 @@ export const ctaBlockType = defineType({
             type: 'color',
             description: 'Select a custom background color',
             hidden: ({ parent }) => parent?.backgroundColor !== 'custom',
+            group: "style",
         }),
         defineField({
             name: 'textColor',
             title: 'Text Color',
             type: 'color',
             description: 'Choose a text color that contrasts with the background',
+            group: "style",
         }),
     ],
     preview: {
