@@ -1,10 +1,10 @@
-.cta-block-main{background: #0B1014;border-radius: 16px;padding: 100px 100px;margin: 100px 0;position: relative;display: flex;align-items: center;gap: 30px;}
+.cta-block-main{background: #0B1014;border-radius: 16px;padding: 100px 100px;margin: 100px 0;position: relative;display: flex;align-items: center;gap: 30px;justify-content: space-between;}
 .cta-block-main::after{content: "";background-image: url(../images/cta-round-image.svg);background-repeat: no-repeat;width: 421px;height: 421px;position: absolute;top: 0;right:0;}
 .cta-block-main::before{content: "";background-image: url(../images/cta-half-round-image.svg);background-repeat: no-repeat;background-size: contain;width: 90px;height: 90px;position: absolute;bottom: 0;left: 0;}
-.cta-block-main .cta-block-content{max-width: 730px;}
-.cta-block-main .cta-block-content .cta-block-heading{margin: 0 0 15px 0;color: #FFF;font-size: 32px;}
-.cta-block-main .cta-block-content .cta-block-description{margin: 0;color: rgba(255, 255, 255, 0.8);}
-.cta-block-main .cta-block-buttons{flex-shrink: 0;}
+.cta-block-main .cta-block-content{max-width: 730px;position: relative;z-index: 9;}
+.cta-block-main .cta-block-content .cta-block-heading{margin: 0 0 10px 0;color: #FFF;font-size: 32px;}
+.cta-block-main .cta-block-content .cta-block-description{margin: 0;color: rgba(255, 255, 255, 0.8);font-size: 20px;}
+.cta-block-main .cta-block-buttons{flex-shrink: 0;position: relative;z-index: 9;}
 .cta-block-main .cta-block-buttons .cta-block-buttons-text{
     background: #0b1014;
     border: 2px solid #FFFFFF;
@@ -16,4 +16,5 @@
     padding: 18px 30px;
     display: table;
     text-decoration: none;
+    cursor: pointer;
 }

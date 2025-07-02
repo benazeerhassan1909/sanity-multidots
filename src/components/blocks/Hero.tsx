@@ -37,18 +37,16 @@ export default function HeroBlock({
   console.log(bgImage);
   return text ? (
     <section
-      className="hero-block"
+      className="hero-block-main"
       style={{
         backgroundColor: bgColor,
         textAlign: alignment,
         color: txtColor,
       }}
     >
-      <div className="hero-block__container">
-        <div className='hero-block__border'></div>
-        <div className="hero-block__content">
-          <PortableText value={text} />
-        </div>
+      <div className='hero-block-border'></div>
+      <div className="hero-block-content">
+        <PortableText value={text} />
       </div>
     </section>
   ) : null;
