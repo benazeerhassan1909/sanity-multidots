@@ -21,3 +21,6 @@
 	.image-text-section-main .image-text-section-content{max-width:100%;order: 2;}
     .image-text-section-main .image-text-section-image{order: 1;}
 }
+@media only screen and (max-width:420px){
+    .image-text-section-main .image-text-section-content .image-text-section-button .image-text-section-button-text{padding: 15px 12px;font-size: 17px;}
+}

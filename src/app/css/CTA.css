@@ -20,3 +20,8 @@
 	.cta-block-main .cta-block-content .cta-block-description{font-size:20px;}
     .cta-block-main .cta-block-buttons .cta-block-buttons-text{font-weight: 500;}
 }
+@media only screen and (max-width:420px){
+    .cta-block-main{padding: 30px 30px;}
+    .cta-block-main .cta-block-content .cta-block-description {font-size: 18px;}
+    .cta-block-main .cta-block-buttons .cta-block-buttons-text{padding: 12px 10px;font-size: 15px;}
+}

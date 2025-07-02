@@ -98,5 +98,12 @@ footer.site-footer .footer-bottom .footer-social-inner img{height:20px;width:aut
 	footer.site-footer .footer-bottom .footer-bottom-left{order:2;}
 	footer.site-footer .footer-bottom .footer-bottom-right{order:1;}
 }
+@media only screen and (max-width:420px){
+	h1{font-size:28px;line-height:34px;}
+	footer.site-footer .footer-top-left .footer-email a{font-size:20px;}
+	footer.site-footer .footer-top-left .footer-partner-logos{gap:20px;max-width:inherit;}
+	footer.site-footer .footer-top-left .footer-partner-logos img{height:60px;}
+	footer.site-footer .footer-bottom .footer-social-inner{gap:25px;}
+}
 
 /* mobile css end */
