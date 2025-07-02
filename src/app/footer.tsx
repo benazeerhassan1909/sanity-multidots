@@ -20,7 +20,7 @@ type SocialLink = {
     url?: string;
     icon?: (SanityImageSource & { alt?: string; width?: number; height?: number });
 };
-  
+
 export default async function Footer() {
     const { data: siteSettings } = await sanityFetch({ query: FOOTER_QUERY });
 
@@ -41,29 +41,26 @@ export default async function Footer() {
                 <div className='footer-top-left'>
                     {footerLogo && (
                         <div className="footer-logo">
-                            <Image
-                                src={footerLogo ? urlFor(footerLogo)?.url() ?? '' : ''}
-                                alt={footerLogo?.alt || 'Footer Logo'}
-                                width={footerLogo?.width || 150}
-                                height={footerLogo?.height || 40}
-                            />
+                            <Link href="/">
+                                <Image
+                                    src={footerLogo ? urlFor(footerLogo)?.url() ?? '' : ''}
+                                    alt={footerLogo?.alt || 'Footer Logo'}
+                                    width={footerLogo?.width || 150}
+                                    height={footerLogo?.height || 40}
+                                />
+                            </Link>
                         </div>
                     )}
 
                     <div className="footer-contact">
-                        {email && <p className="footer-email">{email}</p>}
+                        {email && <p className="footer-email">
+                            <a href={`mailto:${email}`}>{email}</a></p>}
 
                         {scheduleMeetingUrl && (
                             <a href={scheduleMeetingUrl} className="footer-schedule-link">
                                 {scheduleMeetingTitle || 'Schedule a Meeting'}
                             </a>
                         )}
-
-                        {/* {buttons.map((button) => (
-                    <Link key={button._key} href={button.url} className={`footer__button`}>
-                        {button.label}
-                    </Link>
-                ))} */}
                     </div>
 
                     {/* Partner Logos */}
@@ -105,7 +102,9 @@ export default async function Footer() {
                                         <div key={locations._key} className="footer-address-box">
                                             <span className="footer-location-title">{locations.title}</span>
                                             <p className="footer-location-address">{locations.address}</p>
-                                            <p className="footer-location-phone">{locations.phone}</p>
+                                            <p className="footer-location-phone">
+                                                <a href={`tel:${locations.phone}`}>{locations.phone}</a>
+                                            </p>
                                         </div>
                                     ))}
                                 </div>
@@ -122,7 +121,9 @@ export default async function Footer() {
                                         <div key={location._key} className="footer-address-box">
                                             <span className="footer-location-title">{location.title}</span>
                                             <p className="footer-location-address">{location.address}</p>
-                                            <p className="footer-location-phone">{location.phone}</p>
+                                            <p className="footer-location-phone">
+                                                <a href={`tel:${location.phone}`}>{location.phone}</a>
+                                            </p>
                                         </div>
                                     ))}
                                 </div>
@@ -158,28 +159,28 @@ export default async function Footer() {
                     <div className='footer-bottom-right'>
                         {socialLinks.length > 0 && (
                             <div className="footer-social">
-                                        {socialLinks.length > 0 && (
-                                            <div className="footer-social-inner">
-                                                {socialLinks.map((link: SocialLink) => (
-                                                    <a
-                                                        key={link._key}
-                                                        href={link.url}
-                                                        className="footer__social-link"
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
-                                                    >
-                                                        {link.icon && (
-                                                            <Image
-                                                                src={urlFor(link.icon).url()}
-                                                                alt={link.icon.alt || 'Social Icon'}
-                                                                width={link.icon.width || 24}
-                                                                height={link.icon.height || 24}
-                                                            />
-                                                        )}
-                                                    </a>
-                                                ))}
-                                            </div>
-                                        )}
+                                {socialLinks.length > 0 && (
+                                    <div className="footer-social-inner">
+                                        {socialLinks.map((link: SocialLink) => (
+                                            <a
+                                                key={link._key}
+                                                href={link.url}
+                                                className="footer__social-link"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                {link.icon && (
+                                                    <Image
+                                                        src={urlFor(link.icon).url()}
+                                                        alt={link.icon.alt || 'Social Icon'}
+                                                        width={link.icon.width || 24}
+                                                        height={link.icon.height || 24}
+                                                    />
+                                                )}
+                                            </a>
+                                        ))}
+                                    </div>
+                                )}
                             </div>
                         )}
                     </div>
