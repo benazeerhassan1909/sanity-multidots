@@ -17,7 +17,7 @@ interface HighlightDecoratorProps {
 }
 
 const HighlightDecorator: FC<HighlightDecoratorProps> = (props) => (
-  <span style={{ backgroundColor: 'yellow' }}>{props.children}</span>
+  <span style={{ backgroundColor: '#E8FF00' }}>{props.children}</span>
 )
 export const blockContentType = defineType({
   title: 'Block Content',
