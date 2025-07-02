@@ -4,26 +4,48 @@ export const imageTextSection = defineType({
     name: 'imageTextSection',
     title: 'Image & Text Section',
     type: 'object',
+    groups: [
+        {
+            name: "content",
+            title: "Content",
+        },
+        {
+            name: "image",
+            title: "Image",
+        },
+        {
+            name: "button",
+            title: "Button",
+        },
+        {
+            name: "style",
+            title: "Style",
+        },
+    ],
     fields: [
         defineField({
             name: 'title',
             type: 'string',
             title: 'Title',
+            group: "content",
         }),
         defineField({
             name: 'subTitle',
             type: 'string',
             title: 'Sub Title',
+            group: "content",
         }),
         defineField({
             name: 'description',
             type: 'blockContent',
             title: 'Description',
+            group: "content",
         }),
         defineField({
             name: 'mainImage',
             type: 'image',
             title: 'Main Image',
+            group: "image",
             options: {
                 hotspot: true,
             },
@@ -49,6 +71,7 @@ export const imageTextSection = defineType({
             name: 'imagePosition',
             type: 'string',
             title: 'Main Image Position',
+            group: "style",
             options: {
                 list: [
                     { title: 'Left', value: 'left' },
@@ -61,6 +84,7 @@ export const imageTextSection = defineType({
         defineField({
             name: 'button',
             title: 'Button',
+            group: "button",
             type: 'object',
             fields: [
                 defineField({
