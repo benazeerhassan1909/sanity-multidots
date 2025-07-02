@@ -10,6 +10,9 @@ import { ctaBlockType } from './blocks/ctaType';
 import { imageTextSection } from './blocks/imageTextType';
 import { clientList } from './blocks/clientListType';
 import { featuresType } from './blocks/featureType';
+import { blogType } from './blogType';
+import { categoryType } from './categoryType';
+import { authorType } from './authorType';
 
 
 
@@ -25,7 +28,10 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     ctaBlockType,
     imageTextSection,
     clientList,
-    featuresType
+    featuresType,
+    blogType,
+    authorType,
+    categoryType
 
   ],
 }

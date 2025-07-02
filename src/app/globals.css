@@ -93,7 +93,7 @@ footer.site-footer .footer-bottom .footer-social-inner img{height:20px;width:aut
 	footer.site-footer .footer-top-right .footer-menu-list{flex-direction:column;align-items:flex-start;gap:28px;}
 	footer.site-footer .footer-top-right .footer-menu-item:after{display:none;}
 	footer.site-footer .footer-bottom{padding:30px 24px;}
-	footer.site-footer .footer-bottom-inner{flex-direction:column;gap:35px;}
+	footer.site-footer .footer-bottom-inner{flex-direction:column;gap:35px;text-align: center;}
 	footer.site-footer .footer-bottom .footer-social-inner{gap:55px;}
 	footer.site-footer .footer-bottom .footer-bottom-left{order:2;}
 	footer.site-footer .footer-bottom .footer-bottom-right{order:1;}

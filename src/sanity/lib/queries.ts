@@ -47,3 +47,14 @@ export const SITEMAP_QUERY = defineQuery(`
       _updatedAt
   }
   `)
+ 
+export const POSTS_QUERY = defineQuery(`* [_type == "blog"] | order(publishedAt desc) {
+  _id,
+  title,
+  slug,
+  description,
+  publishedAt,
+  mainImage,
+  "author": author-> name,image,
+    "categories": categories[] -> title
+}`)

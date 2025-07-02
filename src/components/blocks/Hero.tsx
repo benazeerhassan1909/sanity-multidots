@@ -23,7 +23,7 @@ export default function HeroBlock({
   backgroundColor,
   textColor,
   alignment = 'center',
-  bgImage
+  
 }: HeroBlockProps) {
   const bgColor = typeof backgroundColor === 'string'
     ? backgroundColor
@@ -33,8 +33,6 @@ export default function HeroBlock({
     ? textColor
     : textColor?.hex;
 
-  // Generate background image URL if available
-  console.log(bgImage);
   return text ? (
     <section
       className="hero-block-main"
