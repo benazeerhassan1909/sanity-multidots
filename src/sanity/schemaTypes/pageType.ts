@@ -41,15 +41,6 @@ export const pageType = defineType({
             group: "content",
         }),
         defineField({
-            name: "mainImage",
-            type: "image",
-            options: {
-                hotspot: true,
-            },
-            group: "content",
-
-        }),
-        defineField({
             name: "seo",
             type: "seo",
             description: "SEO settings for this page. If not provided, the title and description will be used.",
