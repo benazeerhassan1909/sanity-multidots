@@ -63,7 +63,7 @@ export default function ClientList({
                                 <div key={logo._key} className="client-list-logo">
                                     <div className="client-list-logo-image">
                                         {logo.url ? (
-                                            <Link href={logo.url}>
+                                            <Link href={logo.url} target="_blank">
                                                 <Image
                                                     src={imageUrl}
                                                     alt={logo.alt || 'Client logo'}
