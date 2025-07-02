@@ -49,9 +49,6 @@ export default function FeaturesBlock({
                                         alt={feature.icon.alt || ''}
                                         width={feature.icon.width || 48}
                                         height={feature.icon.height || 48}
-                                        style={{
-                                            objectFit: 'none',
-                                        }}
                                     />
                                 </div>
                             )}
