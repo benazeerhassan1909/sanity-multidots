@@ -364,6 +364,11 @@ const siteSettings = {
                                     type: 'string',
                                     validation: Rule => Rule.required()
                                 },
+                                {
+                                    name: 'newTab',
+                                    title: 'Open in New Tab',
+                                    type: 'boolean'
+                                }
                             ],
                             preview: {
                                 select: {

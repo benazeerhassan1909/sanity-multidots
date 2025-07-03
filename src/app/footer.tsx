@@ -23,16 +23,14 @@ type SocialLink = {
 
 export default async function Footer() {
     const { data: siteSettings } = await sanityFetch({ query: FOOTER_QUERY });
-
-    console.log('Footer siteSettings:', siteSettings);
-
     const { footerLogo, email, scheduleMeetingTitle, scheduleMeetingUrl, footerLogos = {}, copyrrightText } = siteSettings?.footer || {};
     const addressSections: AddressSection[] = Array.isArray(siteSettings?.footer?.addressSection)
         ? siteSettings.footer.addressSection
         : Array.isArray(siteSettings?.footer?.addressSection?.locations)
             ? siteSettings.footer.addressSection.locations
             : [];
-    const menuItems = siteSettings?.footer?.footermenuItems ?? [];
+    type MenuItem = { _key: string; url?: string; title?: string; openInNewTab?: boolean };
+    const menuItems: MenuItem[] = siteSettings?.footer?.footermenuItems ?? [];
     const socialLinks = siteSettings?.footer?.socialLinks ?? [];
 
     return (
@@ -141,9 +139,9 @@ export default async function Footer() {
                     {menuItems.length > 0 && (
                         <nav className="footer-menu">
                             <ul className="footer-menu-list">
-                                {menuItems.map((item: { _key: string; url?: string; title?: string }) => (
+                                {menuItems.map((item: { _key: string; url?: string; title?: string; openInNewTab?: boolean }) => (
                                     <li key={item._key} className="footer-menu-item">
-                                        <Link href={item.url ?? '#'} className="footer-menu-link">
+                                        <Link href={item.url ?? '#'} className="footer-menu-link" target={item.openInNewTab ? '_blank' : '_self' }>
                                             {item.title}
                                         </Link>
                                     </li>
