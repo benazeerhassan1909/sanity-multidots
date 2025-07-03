@@ -7,32 +7,23 @@ import Footer from "../footer";
 import Head from 'next/head';
 import ScrollHandler from "@/components/ScrollHandler";
 import "@/app/globals.css";
-
-type PageSEO = {
-  seo?: {
-    title?: string;
-    description?: string;
-    image?: {
-      asset?: {
-        url?: string;
-      };
-    };
-    noIndex?: boolean;
-  };
-  title?: string;
-};
+import { PAGE_QUERY } from "@/sanity/lib/queries";
+import { sanityFetch } from "@/sanity/lib/live";
+import { urlFor } from "@/sanity/lib/image";
 
 export default async function FrontendLayout({
   children,
-  pageData
 }: Readonly<{
   children: React.ReactNode;
-  pageData?: PageSEO;
 }>) {
-  const pageTitle = pageData?.seo?.title || pageData?.title || "Default Title";
-  const pageDescription = pageData?.seo?.description || "Default description";
-  const pageImage = pageData?.seo?.image?.asset?.url;
-  const noIndex = pageData?.seo?.noIndex;
+  const { data: homePageData } = await sanityFetch({ query: PAGE_QUERY });
+
+  const pageTitle = homePageData?.homePage?.seo?.title || homePageData?.homePage?.title || "Default Title";
+  const pageImage = homePageData?.homePage?.seo?.image ? urlFor(homePageData.homePage.seo.image).url() : undefined;
+  const pageDescription = homePageData?.homePage?.seo?.description;
+  const noIndex = homePageData?.homePage?.seo?.noIndex;
+
+  console.log(noIndex);
 
   return (
     <>
@@ -58,7 +49,6 @@ export default async function FrontendLayout({
         {noIndex && (
           <>
             <meta name="robots" content="noindex, nofollow" />
-            <meta name="googlebot" content="noindex, nofollow" />
           </>
         )}
       </Head>

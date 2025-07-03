@@ -382,22 +382,6 @@ export type SiteSettings = {
   _updatedAt: string;
   _rev: string;
   siteTitle?: string;
-  generalSettings?: {
-    favicon?: {
-      asset?: {
-        _ref: string;
-        _type: "reference";
-        _weak?: boolean;
-        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-      };
-      media?: unknown;
-      hotspot?: SanityImageHotspot;
-      crop?: SanityImageCrop;
-      width?: number;
-      height?: number;
-      _type: "image";
-    };
-  };
   logo?: {
     asset?: {
       _ref: string;
