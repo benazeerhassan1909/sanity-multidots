@@ -139,9 +139,9 @@ export default async function Footer() {
                     {menuItems.length > 0 && (
                         <nav className="footer-menu">
                             <ul className="footer-menu-list">
-                                {menuItems.map((item: { _key: string; url?: string; title?: string; openInNewTab?: boolean }) => (
+                                {menuItems.map((item: { _key: string; url?: string; title?: string; newTab?: boolean }) => (
                                     <li key={item._key} className="footer-menu-item">
-                                        <Link href={item.url ?? '#'} className="footer-menu-link" target={item.openInNewTab ? '_blank' : '_self' }>
+                                        <Link href={item.url ?? '#'} className="footer-menu-link" target={item.newTab ? '_blank' : '_self' }>
                                             {item.title}
                                         </Link>
                                     </li>
