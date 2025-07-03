@@ -11,7 +11,6 @@ const siteSettings = {
         { name: 'jobSettings', title: 'Job' },
     ],
     fields: [
-        // General Settings
         {
             name: 'siteTitle',
             title: 'Site Title',
@@ -19,47 +18,6 @@ const siteSettings = {
             group: 'generalSettings',
             validation: Rule => Rule.required()
         },
-        // {
-        //     name: 'generalSettings',
-        //     title: 'General Settings',
-        //     type: 'object',
-        //     group: 'generalSettings',
-        //     options: { collapsible: true, collapsed: false },
-        //     fields: [
-        //         {
-        //             name: 'favicon',
-        //             title: 'Favicon',
-        //             type: 'image',
-        //             options: { hotspot: true },
-        //             validation: Rule => Rule.required(),
-        //             fields: [
-        //                 {
-        //                     name: 'alt',
-        //                     type: 'string',
-        //                     title: 'Alternative Text',
-        //                 },
-        //                 {
-        //                     name: 'width',
-        //                     title: 'Image Width',
-        //                     type: 'number'
-        //                 },
-        //                 {
-        //                     name: 'height',
-        //                     title: 'Image Height',
-        //                     type: 'number'
-        //                 },
-        //             ]
-        //         },
-        //         {
-        //             name: 'seoDescription',
-        //             title: 'SEO Description',
-        //             type: 'text',
-        //             validation: Rule => Rule.max(160).warning('Should be under 160 characters')
-        //         },
-        //     ]
-        // },
-
-        // Header Settings
         {
             name: 'logo',
             title: 'Site Logo',

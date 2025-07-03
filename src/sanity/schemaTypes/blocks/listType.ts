@@ -40,6 +40,25 @@ export const listType = defineType({
                             name: "icon",
                             title: "Icon",
                             type: "image",
+                            options: { hotspot: true },
+                            fields: [
+                                defineField({
+                                    name: 'alt',
+                                    type: 'string',
+                                    title: 'Alternative Text',
+                                }),
+                                defineField({
+                                    name: 'width',
+                                    title: 'Image Width',
+                                    type: 'number'
+                                }),
+                                defineField({
+                                    name: 'height',
+                                    title: 'Image Height',
+                                    type: 'number'
+                                }),
+                            ]
+
                         }),
                        
                     ],

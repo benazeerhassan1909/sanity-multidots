@@ -24,80 +24,6 @@ export type Category = {
   description?: string;
 };
 
-export type Blog = {
-  _id: string;
-  _type: "blog";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  title?: string;
-  slug?: Slug;
-  description?: string;
-  author?: {
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    [internalGroqTypeReferenceTo]?: "author";
-  };
-  mainImage?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-  };
-  categories?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "category";
-  }>;
-  publishedAt?: string;
-  body?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }>;
-  seo?: {
-    metaTitle?: string;
-    metaDescription?: string;
-    keywords?: Array<string>;
-  };
-};
-
 export type Author = {
   _id: string;
   _type: "author";
@@ -170,6 +96,81 @@ export type Author = {
     url?: string;
     _key: string;
   }>;
+};
+
+export type Blog = {
+  _id: string;
+  _type: "blog";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  description?: string;
+  author?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "author";
+  }>;
+  mainImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  };
+  categories?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
+  publishedAt?: string;
+  body?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  } | {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+    _key: string;
+  }>;
+  seo?: {
+    metaTitle?: string;
+    metaDescription?: string;
+    keywords?: Array<string>;
+  };
 };
 
 export type Features = {
@@ -312,6 +313,9 @@ export type List = {
       media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
+      alt?: string;
+      width?: number;
+      height?: number;
       _type: "image";
     };
     _type: "listItem";
@@ -389,12 +393,10 @@ export type SiteSettings = {
       media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
-      alt?: string;
       width?: number;
       height?: number;
       _type: "image";
     };
-    seoDescription?: string;
   };
   logo?: {
     asset?: {
@@ -508,6 +510,7 @@ export type SiteSettings = {
     footermenuItems?: Array<{
       title?: string;
       url?: string;
+      newTab?: boolean;
       _key: string;
     }>;
     copyrrightText?: string;
@@ -762,7 +765,7 @@ export type SanityAssetSourceData = {
   url?: string;
 };
 
-export type AllSanitySchemaTypes = Category | Blog | Author | Features | ClientList | ImageTextSection | CtaBlock | List | Hero | PageBuilder | SiteSettings | Page | Seo | BlockContent | Color | RgbaColor | HsvaColor | HslaColor | MediaTag | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
+export type AllSanitySchemaTypes = Category | Author | Blog | Features | ClientList | ImageTextSection | CtaBlock | List | Hero | PageBuilder | SiteSettings | Page | Seo | BlockContent | Color | RgbaColor | HsvaColor | HslaColor | MediaTag | SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityImageHotspot | SanityImageCrop | SanityFileAsset | SanityImageAsset | SanityImageMetadata | Geopoint | Slug | SanityAssetSourceData;
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: HEADER_QUERY
@@ -885,6 +888,7 @@ export type FOOTER_QUERYResult = {
     footermenuItems?: Array<{
       title?: string;
       url?: string;
+      newTab?: boolean;
       _key: string;
     }>;
     copyrrightText?: string;
@@ -1096,6 +1100,9 @@ export type HOME_PAGE_QUERYResult = {
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
+          alt?: string;
+          width?: number;
+          height?: number;
           _type: "image";
         };
         _type: "listItem";
@@ -1308,6 +1315,9 @@ export type PAGE_QUERYResult = {
           media?: unknown;
           hotspot?: SanityImageHotspot;
           crop?: SanityImageCrop;
+          alt?: string;
+          width?: number;
+          height?: number;
           _type: "image";
         };
         _type: "listItem";
@@ -1340,8 +1350,30 @@ export type SITEMAP_QUERYResult = Array<{
   _updatedAt: string;
 }>;
 // Variable: POSTS_QUERY
-// Query: * [_type == "post"] | order(publishedAt desc) {  _id,  title,  slug,  description,  publishedAt,  mainImage,  "author": author-> name,    "categories": categories[] -> title}
-export type POSTS_QUERYResult = Array<never>;
+// Query: * [_type == "blog"] | order(publishedAt desc) {  _id,  title,  slug,  description,  publishedAt,  mainImage,  "author": author-> name,image,    "categories": categories[] -> title}
+export type POSTS_QUERYResult = Array<{
+  _id: string;
+  title: string | null;
+  slug: Slug | null;
+  description: string | null;
+  publishedAt: string | null;
+  mainImage: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    alt?: string;
+    _type: "image";
+  } | null;
+  author: null;
+  image: null;
+  categories: Array<string | null> | null;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
@@ -1351,6 +1383,6 @@ declare module "@sanity/client" {
     "*[_type == \"siteSettings\" && _id == \"siteSettings\"][0]{\n  footer }": FOOTER_QUERYResult;
     "*[_id == \"siteSettings\"][0]{\n  homePage->{\n    ...,\n    \"seo\": {\n    \"title\": coalesce(seo.title, title, \"\"),\n     \"description\": coalesce(seo.description,  \"\"),\n    \"image\": seo.image,\n    \"noIndex\": seo.noIndex == true\n  },\n    content[]{\n      ...,\n    }      \n  }\n}": HOME_PAGE_QUERYResult | PAGE_QUERYResult;
     "\n  *[_type in [\"page\", \"post\"] && defined(slug.current)] {\n      \"href\": select(\n        _type == \"page\" => \"/\" + slug.current,\n        _type == \"post\" => \"/posts/\" + slug.current,\n        slug.current\n      ),\n      _updatedAt\n  }\n  ": SITEMAP_QUERYResult;
-    "* [_type == \"post\"] | order(publishedAt desc) {\n  _id,\n  title,\n  slug,\n  description,\n  publishedAt,\n  mainImage,\n  \"author\": author-> name,\n    \"categories\": categories[] -> title\n}": POSTS_QUERYResult;
+    "* [_type == \"blog\"] | order(publishedAt desc) {\n  _id,\n  title,\n  slug,\n  description,\n  publishedAt,\n  mainImage,\n  \"author\": author-> name,image,\n    \"categories\": categories[] -> title\n}": POSTS_QUERYResult;
   }
 }

@@ -7,7 +7,7 @@ import { SanityImageSource } from '@sanity/image-url/lib/types/types';
 type ListItem = {
     _key: string;
     list?: string;
-    icon?: SanityImageSource; // SanityImageSource type if available
+    icon?: SanityImageSource & { width?: number; height?: number }; // Add width and height
     description?: string;
 };
 
@@ -38,8 +38,8 @@ export default function ListBlock({
                                         <Image
                                             src={urlFor(item.icon).url()}
                                             alt="List icon"
-                                            width={42}
-                                            height={60}
+                                            width={item.icon.width || 60}
+                                            height={item.icon.height || 60}
                                         />
                                     </div>
                                 )}
