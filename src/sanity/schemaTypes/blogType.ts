@@ -30,8 +30,11 @@ export const blogType = defineType({
         {
             name: 'author',
             title: 'Author',
-            type: 'reference',
-            to: [{ type: 'author' }],
+            type: 'array', // changed from 'reference'
+            of: [{ type: 'reference', to: [{ type: 'author' }] }],
+            options: {
+                layout: 'tags'
+            }
         },
         {
             name: 'mainImage',
@@ -117,10 +120,9 @@ export const blogType = defineType({
     preview: {
         select: {
             title: 'title',
-            author: 'author.name',
+            author: 'author.0.name', // show first author in preview
             media: 'mainImage',
             subtitle: 'description'
         },
-       
     }
 })
