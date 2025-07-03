@@ -8,9 +8,9 @@ h3{font-size:24px;line-height:28px;font-weight:600;font-family:sen,sans-serif;co
 p{font-size:18px;line-height:30px;font-weight:400;font-family:sen,sans-serif;color:#303034;margin:0 0 20px 0;letter-spacing:-0.02em;}
 
 /* header css start */
-header.site-header{padding:40px 0;}
+header.site-header{padding:35px 0;}
 header.site-header .header-inner{display:flex;align-items:center;justify-content:center;}
-header.site-header .header-logo{border-right:1px solid #AFAFAF;margin:0 20px 0 0;padding:0 20px 0 0;}
+header.site-header .header-logo{border-right:1px solid #AFAFAF;margin:0 20px 0 0;padding:4px 20px 4px 0;}
 
 /* header css end */
 
@@ -52,7 +52,7 @@ footer.site-footer .footer-bottom .footer-social-inner img{height:20px;width:aut
 	h2{font-size:32px;line-height:40px;}
 	h3{font-size:22px;line-height:24px;}
 	header.site-header{padding:30px 0;}
-	header.site-header .header-logo{width:165px;margin:0 15px 0 0;padding:0 15px 0 0;}
+	header.site-header .header-logo{width:165px;margin:0 15px 0 0;padding:4px 15px 4px 0;}
 	header.site-header .header-sanity-logo{width:85px;}
 	footer.site-footer .footer-top{gap:15px;padding:30px 30px;}
 	footer.site-footer .footer-top-left .footer-contact{margin:0 0 40px;}
@@ -75,7 +75,7 @@ footer.site-footer .footer-bottom .footer-social-inner img{height:20px;width:aut
 	h2{font-size:24px;line-height:34px;}
 	h3{font-size:20px;line-height:22px;}
 	.container{padding-left:36px;padding-right:36px;}
-	header.site-header{padding:25px 0 35px 0;}
+	header.site-header{padding:25px 0 30px;}
 	header.site-header .header-logo{width:120px;}
 	header.site-header .header-sanity-logo{width:67px;}
 	footer.site-footer .footer-top{gap:55px;padding:48px 24px 55px 24px;flex-direction:column;}
