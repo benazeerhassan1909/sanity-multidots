@@ -1,5 +1,6 @@
 @font-face{font-family:sen;font-style:normal;font-weight:400 800;font-display:swap;src:url('/fonts/Sen-VariableFont_wght.ttf') format('truetype');font-stretch:normal;}
-body{margin:0;overflow-x:hidden;font-size:18px;font-weight:400;color:#303034;font-family:sen,sans-serif;letter-spacing:-0.02em;}
+html {text-rendering: optimizelegibility !important;-webkit-font-smoothing: antialiased !important;}
+body{margin:0;overflow-x:hidden;font-size:18px;font-weight:400;color:#303034;font-family:sen,sans-serif;letter-spacing:-0.02em;text-rendering: optimizelegibility !important;-webkit-font-smoothing: antialiased !important;}
 .container{max-width:1328px;margin-right:auto;margin-left:auto;padding-left:24px;padding-right:24px;box-sizing:border-box;}
 img{vertical-align:middle;max-width:100%;height:auto;}
 h1{font-size:48px;line-height:64px;font-weight:600;font-family:sen,sans-serif;color:#0A0B0C;margin:0;letter-spacing:-0.02em;}
