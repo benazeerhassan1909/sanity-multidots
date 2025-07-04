@@ -4,6 +4,7 @@ import { urlFor } from '@/sanity/lib/image';
 import Link from 'next/link';
 import { FOOTER_QUERY } from '@/sanity/lib/queries';
 import { sanityFetch } from '@/sanity/lib/live';
+import Script from 'next/script';
 
 
 
@@ -141,9 +142,11 @@ export default async function Footer() {
                             <ul className="footer-menu-list">
                                 {menuItems.map((item: { _key: string; url?: string; title?: string; newTab?: boolean }) => (
                                     <li key={item._key} className="footer-menu-item">
-                                        <Link href={item.url ?? '#'} className="footer-menu-link" target={item.newTab ? '_blank' : '_self' }>
+                                        <Link href={item.url ?? '#'} className="footer-menu-link link iubenda-embed iubenda-nostyle" target={item.newTab ? '_blank' : '_self' }>
                                             {item.title}
                                         </Link>
+                                        <Script strategy="afterInteractive" src="https://cdn.iubenda.com/iubenda_i_badge.js" />
+                                        <Script strategy="afterInteractive" src="https://cdn.iubenda.com/iubenda.js" />
                                     </li>
                                 ))}
                             </ul>
